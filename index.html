@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beast Kai</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<header>
+<h1>Beast Kai</h1>
+<nav>
+<button id="teamBuilderBtn">Team Builder</button>
+<button id="wikiBtn">Wiki</button>
+<button id="battleBtn">Battle Simulator</button>
+</nav>
+</header>
+
+<main>
+
+<section id="teamBuilder" class="panel">
+<h2>Team Builder</h2>
+<div id="teamSlots">
+<p>Choose 6 beasts for your team.</p>
+</div>
+<button id="addBeast">Add Beast</button>
+</section>
+
+<section id="wiki" class="panel hidden">
+<h2>Beast Wiki</h2>
+<input id="wikiSearch" placeholder="Search beasts...">
+<div id="wikiResults"></div>
+</section>
+
+<section id="battle" class="panel hidden">
+<h2>Battle Simulator</h2>
+<p>Select two teams to start a doubles battle.</p>
+<button id="startBattle">Start Battle</button>
+<div id="battleLog"></div>
+</section>
+
+</main>
+
+<footer>
+<p>Beast Kai Simulator</p>
+</footer>
+
+<script src="data_bundle.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
