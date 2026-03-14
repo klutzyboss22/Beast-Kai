@@ -166,6 +166,7 @@ th { color:var(--muted); font-weight:600; }
       <button class="tab active" data-tab="builder">Builder</button>
       <button class="tab" data-tab="samples">Sample Teams</button>
       <button class="tab" data-tab="rules">Rules</button>
+      <button class="tab" data-tab="wiki">Wiki</button>
     </div>
 
     <div id="tab-builder">
@@ -232,6 +233,19 @@ th { color:var(--muted); font-weight:600; }
         <div class="footer-note">This page surfaces the workbook-derived rules used by the builder package.</div>
       </div>
     </div>
+    <div id="tab-wiki" class="hidden">
+      <div class="panel">
+        <strong>Beast Kai Wiki</strong>
+        <div class="small" style="margin-top:6px">Search and browse workbook-derived descriptions for moves, abilities, items, statuses, terrains, and beasts.</div>
+        <div class="grid three" style="margin-top:10px">
+          <div><div class="label">Search</div><input id="wikiSearch" placeholder="Search name, type, effect, notes"></div>
+          <div><div class="label">Category</div><select id="wikiCategory"></select></div>
+          <div><div class="label">Sort</div><select id="wikiSort"><option value="name">Name</option><option value="category">Category</option></select></div>
+        </div>
+      </div>
+      <div id="wikiList" class="list-scroll"></div>
+    </div>
+
   </main>
 
   <aside class="inspector">
@@ -267,6 +281,8 @@ const itemNames = (DATA.items || []).map(i => i.Item).filter(Boolean);
 const STORAGE_KEY = 'beast-kai-team-builder-v2';
 const emptySlot = () => ({beast:'', ability:'', item:'', moves:['','','',''], active4:false});
 const state = {team: Array.from({length:6}, emptySlot), selectedBeast: null, tab:'builder'};
+const abilityByName = Object.fromEntries((DATA.abilities||[]).map(a => [a.Ability || a.name, a]));
+const itemByName = Object.fromEntries((DATA.items||[]).map(i => [i.Item || i.name, i]));
 const samples = [
   {name:'Balanced Core', note:'Generalist shell with bulk, speed, and mixed pressure.', picks:['Nuclear Monster','Mount Fuji Turtle','Infected Ant','Religious','Fridge','Kama/Kamakiri']},
   {name:'Fast Pressure', note:'Prioritizes high speed and immediate offensive pressure.', picks:['Infected Ant','Thunderbird/natives','Road Runner','Pirate Queen','Kangal','Skeleton Ice Goat']},
@@ -579,6 +595,92 @@ function renderRules() {
   });
   table.innerHTML = rows.join('');
 }
+function wikiEntries() {
+  const entries = [];
+  (DATA.moves || []).forEach(m => entries.push({
+    category:'Move',
+    name:m.name || 'Unnamed Move',
+    tags:[m.type, m.category, m.target_class, m.effect_class].filter(Boolean),
+    summary:[m.effect, m.machine_flags].filter(Boolean).join(' · ') || 'No stored move description.',
+    details:[
+      ['Type', m.type], ['Category', m.category], ['Power', m.power], ['Accuracy', m.accuracy], ['PP', m.pp], ['Priority', m.priority], ['Target', m.target_class || m.target], ['Effect Class', m.effect_class], ['Flags', m.machine_flags]
+    ].filter(x => x[1] !== undefined && x[1] !== '' && x[1] !== null)
+  }));
+  (DATA.abilities || []).forEach(a => entries.push({
+    category:'Ability',
+    name:a.Ability || a.name || 'Unnamed Ability',
+    tags:[a.Gen, a.Category, a.Trigger].filter(Boolean),
+    summary:a.Effect || a.Description || 'No stored ability description.',
+    details:Object.entries(a).filter(([k,v]) => !['Ability','name','Effect','Description'].includes(k) && v !== '' && v != null).slice(0,8)
+  }));
+  (DATA.items || []).forEach(i => entries.push({
+    category:'Item',
+    name:i.Item || i.name || 'Unnamed Item',
+    tags:[i.Category, i.Trigger].filter(Boolean),
+    summary:i.Effect || i.Description || 'No stored item description.',
+    details:Object.entries(i).filter(([k,v]) => !['Item','name','Effect','Description'].includes(k) && v !== '' && v != null).slice(0,8)
+  }));
+  (DATA.statusRules || []).forEach(s => entries.push({
+    category:'Status',
+    name:s.Status || 'Unnamed Status',
+    tags:[s.Primary_Timing, s.Default_Duration].filter(Boolean),
+    summary:[s.Damage_or_Residual, s.Stat_Modifier, s.Simulator_Notes].filter(Boolean).join(' · '),
+    details:Object.entries(s).filter(([k,v]) => !['Status'].includes(k) && v !== '' && v != null).slice(0,8)
+  }));
+  (DATA.terrains || []).forEach(t => entries.push({
+    category:'Terrain',
+    name:t.Name || 'Unnamed Terrain',
+    tags:[t.Terrain_Class, t.Notes].filter(Boolean),
+    summary:t.Effect || 'No stored terrain description.',
+    details:Object.entries(t).filter(([k,v]) => !['Name','Effect'].includes(k) && v !== '' && v != null).slice(0,8)
+  }));
+  DATA.beasts.forEach(b => entries.push({
+    category:'Beast',
+    name:b.name,
+    tags:[...(b.types||[]), ...(b.roles||[]), ...(b.abilities||[])].filter(Boolean),
+    summary:`BST ${b.bst || '—'} · ${(b.types||[]).join(' / ') || 'No type'} · ${(b.roles||[]).join(', ') || 'No role'}`,
+    details:[['Generation', b.gen], ['Types', (b.types||[]).join(' / ')], ['Roles', (b.roles||[]).join(', ')], ['Abilities', (b.abilities||[]).join(', ')], ['BST', b.bst], ['Forms', b.forms], ['HP Lv50', b.hpLv50]]
+      .filter(x => x[1] !== undefined && x[1] !== '' && x[1] !== null)
+  }));
+  return entries;
+}
+const WIKI_ENTRIES = wikiEntries();
+function filteredWikiEntries() {
+  const q = document.getElementById('wikiSearch').value.trim().toLowerCase();
+  const cat = document.getElementById('wikiCategory').value;
+  let arr = WIKI_ENTRIES.filter(e => {
+    if (cat && e.category !== cat) return false;
+    const hay = [e.name, e.category, ...(e.tags||[]), e.summary, ...(e.details||[]).map(d => `${d[0]} ${d[1]}`)].join(' ').toLowerCase();
+    if (q && !hay.includes(q)) return false;
+    return true;
+  });
+  const sort = document.getElementById('wikiSort').value;
+  if (sort === 'category') arr.sort((a,b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
+  else arr.sort((a,b)=>a.name.localeCompare(b.name));
+  return arr;
+}
+function renderWiki() {
+  const wrap = document.getElementById('wikiList');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  filteredWikiEntries().forEach(e => {
+    const card = el('div', {class:'panel'});
+    card.innerHTML = `
+      <div class="row space">
+        <div>
+          <strong>${escapeHtml(e.name)}</strong>
+          <div class="small">${escapeHtml(e.category)}</div>
+        </div>
+      </div>
+      <div class="small" style="margin-top:6px">${(e.tags||[]).map(tag => `<span class="badge">${escapeHtml(tag)}</span>`).join('')}</div>
+      <div style="margin-top:8px">${escapeHtml(e.summary || 'No summary stored.')}</div>
+      <div class="hr"></div>
+      <table>${(e.details||[]).map(([k,v]) => `<tr><th>${escapeHtml(k)}</th><td>${escapeHtml(v)}</td></tr>`).join('')}</table>
+    `;
+    wrap.appendChild(card);
+  });
+  if (!wrap.children.length) wrap.innerHTML = '<div class="panel small">No wiki entries matched your search.</div>';
+}
 function renderSamples() {
   const wrap = document.getElementById('sampleList');
   wrap.innerHTML = '';
@@ -605,6 +707,7 @@ function setTab(tab) {
   document.getElementById('tab-builder').classList.toggle('hidden', tab !== 'builder');
   document.getElementById('tab-samples').classList.toggle('hidden', tab !== 'samples');
   document.getElementById('tab-rules').classList.toggle('hidden', tab !== 'rules');
+  document.getElementById('tab-wiki').classList.toggle('hidden', tab !== 'wiki');
 }
 function renderAll() {
   renderTeamSlots();
@@ -612,6 +715,7 @@ function renderAll() {
   renderAnalysis();
   renderCoverage();
   renderBeastList();
+  renderWiki();
   if (state.selectedBeast && beastByName[state.selectedBeast]) showBeast(beastByName[state.selectedBeast]);
   saveState();
 }
@@ -634,13 +738,47 @@ document.getElementById('importTeam').onclick = () => {
 document.getElementById('loadSampleBtn').onclick = () => setTab('samples');
 document.querySelectorAll('.tab').forEach(btn => btn.onclick = () => setTab(btn.dataset.tab));
 ['searchBeast','filterType','filterGen','filterRole','filterAbility','sortMode'].forEach(id => document.getElementById(id).addEventListener('input', renderBeastList));
+['wikiSearch','wikiCategory','wikiSort'].forEach(id => document.getElementById(id).addEventListener('input', renderWiki));
 options(document.getElementById('filterType'), allTypes, 'All types');
 options(document.getElementById('filterGen'), gens, 'All generations');
 options(document.getElementById('filterRole'), allRoles, 'All roles');
 options(document.getElementById('filterAbility'), allAbilities, 'All abilities');
+options(document.getElementById('wikiCategory'), [...new Set(WIKI_ENTRIES.map(e => e.category))].sort(), 'All categories');
 renderRules();
 renderSamples();
 renderAll();
 </script>
+
+<script>
+(function(){
+  function openWikiFromLink(category, name){
+    const tabBtn = document.querySelector('[data-tab="wiki"]');
+    if (tabBtn) tabBtn.click();
+    const search = document.getElementById('wikiSearch');
+    const cat = document.getElementById('wikiCategory');
+    if (cat && category) cat.value = category;
+    if (search && name) {
+      search.value = name;
+      search.dispatchEvent(new Event('input', {bubbles:true}));
+    }
+    setTimeout(function(){
+      const candidates = Array.from(document.querySelectorAll('[data-open], .wiki-entry, [data-name]'));
+      const wanted = (name || '').toLowerCase();
+      const match = candidates.find(el => {
+        const text = (el.textContent || el.getAttribute('data-name') || '').trim().toLowerCase();
+        return text.includes(wanted);
+      });
+      if (match) match.click();
+    }, 50);
+  }
+  document.addEventListener('click', function(e){
+    const link = e.target.closest('[data-open-wiki]');
+    if (!link) return;
+    e.preventDefault();
+    openWikiFromLink(link.dataset.category || '', link.dataset.name || link.textContent.trim());
+  });
+})();
+</script>
+
 </body>
 </html>
