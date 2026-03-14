@@ -55,6 +55,9 @@ pre{white-space:pre-wrap;background:#0b1224;border:1px solid var(--line);border-
     <button class="tabbtn" data-tab="wiki">Wiki</button>
     <button class="tabbtn" data-tab="typechart">Type Chart</button>
     <button class="tabbtn" data-tab="rules">Rules</button>
+    <button class="tabbtn" data-tab="battle">Battle</button>
+    <button class="tabbtn" data-tab="calc">Damage Calc</button>
+    <button class="tabbtn" data-tab="meta">Meta Analyzer</button>
   </nav>
 </header>
 <main>
@@ -125,6 +128,173 @@ pre{white-space:pre-wrap;background:#0b1224;border:1px solid var(--line);border-
       <div class="panel"><h2>Terrains</h2><div id="terrainRules"></div></div>
     </div>
   </section>
+
+  <section id="battle" class="tab hidden">
+    <div class="grid cols-2">
+      <div class="panel">
+        <div class="flex" style="justify-content:space-between">
+          <h2>Local Battle Prototype</h2>
+          <div class="flex">
+            <button class="btn" id="startBattleBtn">Start Battle</button>
+            <button class="btn" id="resetBattleBtn">Reset</button>
+          </div>
+        </div>
+        <div class="small">This is a second-stage playable Beast Kai doubles prototype. It supports local turn resolution, speed order, priority, basic spread targeting, terrain starts, status infliction, end-of-turn status damage, simple ability and item hooks, switching, and block as damage reduction. It is still not a full Showdown-grade engine yet.</div>
+        <div class="grid cols-2" style="margin-top:12px">
+          <div class="panel">
+            <h3>Player 1</h3>
+            <label>Import Team</label>
+            <textarea id="p1Import" rows="10" placeholder="Paste exported team text"></textarea>
+            <div class="small">Marking brought 4 in exported text is used automatically.</div>
+          </div>
+          <div class="panel">
+            <h3>Player 2</h3>
+            <label>Import Team</label>
+            <textarea id="p2Import" rows="10" placeholder="Paste exported team text"></textarea>
+            <div class="small">Both sides are local. Great for testing matchups.</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Battlefield</h2>
+        <div id="battleField" class="small">Load two teams and press Start Battle.</div>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:14px">
+      <h2>Turn Controls</h2>
+      <div id="battleControls" class="small">No active battle yet.</div>
+    </div>
+    <div class="panel" style="margin-top:14px">
+      <h2>Battle Notes</h2>
+      <div id="battleNotes" class="small">Implemented in v18: local meta simulation, random legal team generation under the BST cap, AI-vs-AI batch battles, and summary tables for beast and ability win rates. Unimplemented or partial: full redirection systems, extremely complex move scripts, and perfect Showdown-style resolution edge cases.</div>
+    </div>
+    <div class="panel" style="margin-top:14px">
+      <h2>Battle Log</h2>
+      <pre id="battleLog">No battle started.</pre>
+    </div>
+  </section>
+
+
+  <section id="calc" class="tab hidden">
+    <div class="grid cols-2">
+      <div class="panel">
+        <h2>Damage Calculator</h2>
+        <div class="small">Spreadsheet-based Beast Kai damage calculator using Level 50 and your current damage structure.</div>
+        <div class="grid cols-2" style="margin-top:12px">
+          <div class="panel">
+            <h3>Attacker</h3>
+            <label>Beast</label><select id="calcAttacker"></select>
+            <label style="margin-top:8px">Ability</label><select id="calcAttackerAbility"></select>
+            <label style="margin-top:8px">Move</label><select id="calcMove"></select>
+          </div>
+          <div class="panel">
+            <h3>Defender</h3>
+            <label>Beast</label><select id="calcDefender"></select>
+            <label style="margin-top:8px">Blocking</label>
+            <select id="calcBlocking"><option value="0">No</option><option value="1">Yes</option></select>
+            <label style="margin-top:8px">Terrain</label>
+            <select id="calcTerrain">
+              <option value="">None</option>
+              <option>Drought</option>
+              <option>Storm</option>
+              <option>Fallout</option>
+              <option>Blizzard</option>
+              <option>Darkness</option>
+              <option>Nebula Clouds</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex right" style="margin-top:10px"><button class="btn" id="runCalcBtn">Run Calc</button></div>
+      </div>
+      <div class="panel">
+        <h2>Calc Result</h2>
+        <div id="calcResult" class="small">Choose an attacker, defender, and move.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="meta" class="tab hidden">
+    <div class="grid cols-2">
+      <div class="panel">
+        <h2>Meta Analyzer</h2>
+        <div class="small">Run quick spreadsheet-backed meta summaries and matchup tests using the current local AI simulator.</div>
+        <div class="grid cols-2" style="margin-top:12px">
+          <div class="panel">
+            <h3>Quick Tools</h3>
+            <div class="flex" style="margin-top:8px; flex-wrap:wrap">
+              <button class="btn" id="metaTopBSTBtn">Top BST</button>
+              <button class="btn" id="metaTopLegalBtn">Top Legal BST</button>
+              <button class="btn" id="metaTopMoveCountBtn">Top Move Count</button>
+              <button class="btn" id="metaRoleCountsBtn">Role Counts</button>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>AI Matchup Lab</h3>
+            <label style='margin-top:8px'>Meta Team Gauntlet</label>
+            <div class='small'>Test the loaded team against a rotating bank of sample meta teams.</div>
+            <div class='flex' style='margin-top:8px'>
+              <button class='btn' id='metaGauntletBtn'>Run Meta Gauntlet</button>
+            </div>
+            <h3 style='margin-top:12px'>AI Matchup Lab</h3>
+            <label>Number of auto battles</label>
+            <select id="metaBattleCount">
+              <option>10</option>
+              <option selected>25</option>
+              <option>50</option>
+              <option>100</option>
+            </select>
+            <div class="small" style="margin-top:8px">Uses the teams currently loaded in the Battle tab.</div>
+            <div class="flex" style="margin-top:10px">
+              <button class="btn" id="metaRunLoadedTeamsBtn">Analyze Loaded Teams</button>
+            </div>
+          </div>
+        </div>
+      
+          <div class="panel" style="margin-top:12px">
+            <h3>Full Meta Simulator</h3>
+            <div class="small">Generate random legal teams and run many local AI-vs-AI battles to estimate beast and ability performance.</div>
+            <div class="grid cols-3" style="margin-top:10px">
+              <div>
+                <label>Number of battles</label>
+                <select id="fullMetaBattleCount">
+                  <option>25</option>
+                  <option selected>50</option>
+                  <option>100</option>
+                  <option>250</option>
+                </select>
+              </div>
+              <div>
+                <label>Team pool size</label>
+                <select id="fullMetaTeamPool">
+                  <option>24</option>
+                  <option selected>48</option>
+                  <option>72</option>
+                  <option>120</option>
+                </select>
+              </div>
+              <div>
+                <label>Team size</label>
+                <select id="fullMetaTeamSize">
+                  <option selected>6</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex" style="margin-top:10px">
+              <button class="btn" id="fullMetaRunBtn">Run Full Meta Simulator</button>
+              <button class='btn' id='generateTierListBtn'>Generate Tier List</button>
+<button class='btn' id='metaDashboardBtn'>Meta Dashboard</button>
+<button class='btn' id='metaTeamGenBtn'>Generate Top Teams</button>
+            </div>
+          </div>
+      </div>
+      <div class="panel">
+        <h2>Meta Output</h2>
+        <div id="metaOutput" class="small">Choose a meta tool to begin.</div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <script>
@@ -465,6 +635,8 @@ async function init(){
   rerenderAll();
   renderTypeChart();
   renderRules();
+  populateCalcUI();
+  initMetaAnalyzer();
 
   $('#wikiSearch').addEventListener('input', renderWiki);
   $('#wikiCat').addEventListener('change', renderWiki);
@@ -478,7 +650,1404 @@ async function init(){
     const txt = prompt('Paste exported team text here:');
     if(txt){ importText(txt); rerenderAll(); }
   });
+  const sb = document.getElementById('startBattleBtn'); if(sb) sb.addEventListener('click', startBattle);
+  const rb = document.getElementById('resetBattleBtn'); if(rb) rb.addEventListener('click', resetBattle);
 }
+
+
+
+
+const battleState = {
+  active: false,
+  turn: 1,
+  p1: null,
+  p2: null,
+  log: [],
+  terrain: '',
+};
+
+function hpFromHealthStat(h){ return 100 + Number(h || 0) * 3; }
+
+function parseExportedTeam(txt){
+  const blocks = String(txt || '').split(/\n\s*\n/).map(x => x.trim()).filter(Boolean);
+  const slots = [];
+  for(const blk of blocks.slice(0,6)){
+    const lines = blk.split('\n').map(x => x.trim()).filter(Boolean);
+    const first = lines[0] || '';
+    let beast = first, item = '';
+    if(first.includes('@')){
+      const parts = first.split('@');
+      beast = parts[0].trim(); item = parts.slice(1).join('@').trim();
+    }
+    const slot = {beast, item:item === 'No Item' ? '' : item, ability:'', moves:['','','',''], bring:false};
+    for(const line of lines.slice(1)){
+      if(line.startsWith('Ability:')) slot.ability = line.replace('Ability:','').trim();
+      if(line.startsWith('Bring:')) slot.bring = line.replace('Bring:','').trim().toLowerCase() === 'yes';
+      if(line.startsWith('- ')){
+        const idx = slot.moves.findIndex(x => !x);
+        if(idx >= 0) slot.moves[idx] = line.slice(2).trim();
+      }
+    }
+    slots.push(slot);
+  }
+  return slots;
+}
+
+function createBattleSide(teamSlots, label){
+  const full = teamSlots.filter(s => s.beast).map((s, slotIndex) => {
+    const beast = state.data.beastByName[s.beast];
+    const maxHP = hpFromHealthStat(beast.Health);
+    return {
+      beast: s.beast,
+      item: s.item,
+      ability: s.ability || (state.data.abilitiesByBeast[s.beast] || [])[0] || '',
+      moves: s.moves.filter(Boolean),
+      data: beast,
+      currentHP: maxHP,
+      maxHP,
+      fainted: false,
+      status: '',
+      statMods: {atk:1, def:1, spa:1, spd:1, spe:1, eva:1},
+      blocking: false,
+      slotIndex,
+      temp: {sharpenTurns:0, stunned:false},
+    };
+  });
+  const brought = full.filter((x, i) => teamSlots[i] && teamSlots[i].bring);
+  const party = (brought.length ? brought : full.slice(0,4));
+  return {label, party, activeIdx: [0,1].filter(i => party[i])};
+}
+
+function getActiveUnits(side){
+  return side.activeIdx.map(i => ({index:i, unit:side.party[i]})).filter(x => x.unit && !x.unit.fainted);
+}
+
+function getModifiedStat(unit, which){
+  let base = 1;
+  if(which === 'atk') base = Number(unit.data.Attack || 1);
+  if(which === 'def') base = Number(unit.data.Defense || 1);
+  if(which === 'spa') base = Number(unit.data.Sp_Attack || 1);
+  if(which === 'spd') base = Number(unit.data.Sp_Defense || 1);
+  if(which === 'spe') base = Number(unit.data.Speed || 1);
+  if(which === 'eva') base = Number(unit.data.Evasion || 100);
+  let val = base * (unit.statMods[which] || 1);
+  if(which === 'atk' && unit.status === 'Poison') val *= 0.70;
+  if(which === 'spa' && unit.status === 'Burn') val *= 0.70;
+  if(which === 'spe' && unit.status === 'Freeze') val *= 0.70;
+  if(which === 'atk' && unit.temp.sharpenTurns > 0) val = val + Math.floor(base / 2);
+  return Math.max(1, val);
+}
+
+function clampMod(x){ return Math.max(0.5, Math.min(2.0, x)); }
+
+function logLine(s){
+  battleState.log.push(s);
+  $('#battleLog').textContent = battleState.log.join('\n');
+}
+
+function typeMultiplier(moveType, def1, def2){
+  let mult = 1;
+  const row = state.data.typeMap[moveType];
+  if(!row) return 1;
+  if(def1) mult *= parseTypeMultiplier(row[def1]);
+  if(def2) mult *= parseTypeMultiplier(row[def2]);
+  return mult;
+}
+
+function healUnit(unit, frac, source=''){
+  if(unit.fainted) return 0;
+  const amount = Math.max(1, Math.floor(unit.maxHP * frac));
+  const old = unit.currentHP;
+  unit.currentHP = Math.min(unit.maxHP, unit.currentHP + amount);
+  const healed = unit.currentHP - old;
+  if(healed > 0) logLine(`${unit.beast} healed ${healed} HP${source ? ' from ' + source : ''}.`);
+  return healed;
+}
+
+function damageUnit(unit, amount, source=''){
+  if(unit.fainted) return 0;
+  amount = Math.max(0, Math.floor(amount));
+  unit.currentHP = Math.max(0, unit.currentHP - amount);
+  if(amount > 0) logLine(`${unit.beast} took ${amount} damage${source ? ' from ' + source : ''}.`);
+  if(unit.currentHP <= 0){
+    unit.fainted = true;
+    logLine(`${unit.beast} fainted.`);
+  }
+  return amount;
+}
+
+function applyEntryEffects(side){
+  for(const {unit} of getActiveUnits(side)){
+    const ab = unit.ability;
+    if(ab === 'Bond'){
+      const stats = [
+        ['atk', Number(unit.data.Attack || 0)],
+        ['def', Number(unit.data.Defense || 0)],
+        ['spa', Number(unit.data.Sp_Attack || 0)],
+        ['spd', Number(unit.data.Sp_Defense || 0)],
+        ['spe', Number(unit.data.Speed || 0)],
+      ].sort((a,b)=>b[1]-a[1]);
+      const best = stats[0] ? stats[0][0] : '';
+      if(best){
+        unit.statMods[best] = clampMod((unit.statMods[best] || 1) * 1.25);
+        unit.statMods.spe = clampMod((unit.statMods.spe || 1) * 1.25);
+        if(best === 'spe') unit.statMods.spe = clampMod(unit.statMods.spe * 1.25);
+        logLine(`${unit.beast}'s Bond boosted its ${best.toUpperCase()} and Speed.`);
+      }
+    } else if(ab === 'Daunting'){
+      const enemy = side === battleState.p1 ? battleState.p2 : battleState.p1;
+      for(const {unit:foe} of getActiveUnits(enemy)) foe.statMods.atk = clampMod((foe.statMods.atk || 1) * 0.8);
+      logLine(`${unit.beast}'s Daunting lowered opposing Attack.`);
+    }
+  }
+}
+
+function applyTerrainFromText(effectText, user){
+  const text = String(effectText || '').toLowerCase();
+  const terrainMap = [
+    ['blizzard','Blizzard'],
+    ['drought','Drought'],
+    ['storm','Storm'],
+    ['fallout','Fallout'],
+    ['darkness','Darkness'],
+    ['nebula','Nebula Clouds']
+  ];
+  for(const [needle, terrain] of terrainMap){
+    if(text.includes(needle)){
+      battleState.terrain = terrain;
+      logLine(`${user.beast} started ${terrain}.`);
+      return true;
+    }
+  }
+  return false;
+}
+
+function parseStatusFromText(effectText){
+  const text = String(effectText || '').toLowerCase();
+  if(text.includes('burn')) return 'Burn';
+  if(text.includes('poison')) return 'Poison';
+  if(text.includes('freeze')) return 'Freeze';
+  if(text.includes('blind')) return 'Blindness';
+  if(text.includes('stun')) return 'Stun';
+  if(text.includes('infect')) return 'Poison';
+  return '';
+}
+
+function applyParsedStatText(targetUnit, effectText, sourceName){
+  const text = String(effectText || '').toLowerCase();
+  const apply = (stat, mult, msg) => {
+    targetUnit.statMods[stat] = clampMod((targetUnit.statMods[stat] || 1) * mult);
+    logLine(`${targetUnit.beast}'s ${msg}${sourceName ? ' from ' + sourceName : ''}.`);
+  };
+  if(text.includes('lower') && text.includes('defense')) apply('def', 0.8, 'Defense fell');
+  if(text.includes('lower') && text.includes('attack')) apply('atk', 0.8, 'Attack fell');
+  if(text.includes('lower') && text.includes('speed')) apply('spe', 0.8, 'Speed fell');
+  if(text.includes('raise') && text.includes('defense')) apply('def', 1.25, 'Defense rose');
+  if(text.includes('raise') && text.includes('attack')) apply('atk', 1.25, 'Attack rose');
+  if(text.includes('raise') && text.includes('special attack')) apply('spa', 1.25, 'Special Attack rose');
+  if(text.includes('raise') && text.includes('speed')) apply('spe', 1.25, 'Speed rose');
+}
+
+function calcAccuracy(move, attacker, defender){
+  const acc = Number(move.Accuracy || 100);
+  if(acc >= 110) return 100;
+  const eva = getModifiedStat(defender, 'eva');
+  let chance = Math.floor(acc * (100 / Math.max(1, eva)));
+  if(attacker.status === 'Blindness') chance = Math.floor(chance * 0.8);
+  return Math.max(35, Math.min(100, chance));
+}
+
+function calcDamage(attacker, defender, move, spread=false){
+  const lvl = 50;
+  const power = Number(move.Power || 0);
+  if(!power) return 0;
+  const category = String(move.Category || 'Physical').toLowerCase();
+  const atkStat = category === 'special' ? getModifiedStat(attacker, 'spa') : getModifiedStat(attacker, 'atk');
+  const defStat = category === 'special' ? getModifiedStat(defender, 'spd') : getModifiedStat(defender, 'def');
+  const stab = [attacker.data.Type_1, attacker.data.Type_2].includes(move.Move_Type) ? 1.25 : 1;
+  const type = typeMultiplier(move.Move_Type, defender.data.Type_1, defender.data.Type_2);
+  const random = 0.925;
+  const targets = spread ? 0.75 : 1;
+  let other = 1;
+  if(attacker.ability === 'Flame Spec' && move.Move_Type === 'Flame') other *= 1.2;
+  if(attacker.ability === 'Loud Mouth' && String(move.Machine_Flags || '').includes('sound')) other *= 1.2;
+  if(defender.blocking) other *= 0.4;
+  if(defender.item === 'Lightning Rod' && move.Move_Type === 'Plasma') other *= 0.85;
+  if(battleState.terrain === 'Drought'){
+    if(move.Move_Type === 'Flame') other *= 1.2;
+    if(move.Move_Type === 'Aqua') other *= 0.65;
+  }
+  if(battleState.terrain === 'Storm'){
+    if(['Aqua','Wind'].includes(move.Move_Type)) other *= 1.2;
+    if(move.Move_Type === 'Flame') other *= 0.65;
+  }
+  if(battleState.terrain === 'Fallout' && move.Move_Type === 'Toxic') other *= 1.15;
+  const raw = ((((24 + lvl) * power * atkStat) / (32 * Math.max(1, defStat))) + 8) * targets * stab * type * other * random;
+  return Math.max(1, Math.floor(raw));
+}
+
+function getTargetsForAction(sideName, targetMode, move, actorRef){
+  const enemy = sideName === 'p1' ? battleState.p2 : battleState.p1;
+  const ally = sideName === 'p1' ? battleState.p1 : battleState.p2;
+  const enemyActives = getActiveUnits(enemy);
+  const allyActives = getActiveUnits(ally);
+  const targetClass = String(move.Target_Class || '').toLowerCase();
+  if(targetMode === 'self') return [actorRef];
+  if(targetMode === 'ally1' && allyActives[0]) return [allyActives[0]];
+  if(targetMode === 'ally2' && allyActives[1]) return [allyActives[1]];
+  if(targetClass.includes('both') || targetClass.includes('all enemies') || targetClass.includes('both enemies')) return enemyActives;
+  return targetMode === 'target2' && enemyActives[1] ? [enemyActives[1]] : (enemyActives[0] ? [enemyActives[0]] : []);
+}
+
+function buildBattleField(){
+  const renderSide = (side) => {
+    const active = getActiveUnits(side);
+    const bench = side.party.map((u, i) => ({u, i})).filter(x => !side.activeIdx.includes(x.i));
+    return `
+      <div class="panel">
+        <h3>${side.label}</h3>
+        <div class="grid cols-2">
+          ${active.map(({unit}) => `
+            <div class="slot">
+              <div><strong>${escapeHtml(unit.beast)}</strong> ${unit.fainted ? '<span class="bad">Fainted</span>' : ''}</div>
+              <div class="small">${escapeHtml(unit.data.Type_1 || '')}${unit.data.Type_2 ? ' / ' + escapeHtml(unit.data.Type_2) : ''}</div>
+              <div class="small">HP ${unit.currentHP}/${unit.maxHP}</div>
+              <div class="statbar"><div style="width:${Math.max(0, unit.currentHP/unit.maxHP*100)}%"></div></div>
+              <div class="small" style="margin-top:6px">Ability: <span class="link" onclick="openWiki('abilities','${escapeHtml(unit.ability)}')">${escapeHtml(unit.ability || '—')}</span></div>
+              <div class="small">Item: ${unit.item ? `<span class="link" onclick="openWiki('items','${escapeHtml(unit.item)}')">${escapeHtml(unit.item)}</span>` : '—'}</div>
+              <div class="small">Status: ${unit.status || '—'} ${unit.blocking ? '· Blocking' : ''} ${unit.temp.sharpenTurns>0 ? '· Sharpened' : ''}</div>
+              <div class="small">Moves: ${unit.moves.map(m => `<span class="link" onclick="openWiki('moves','${escapeHtml(m)}')">${escapeHtml(m)}</span>`).join(' · ') || '—'}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="small" style="margin-top:8px"><strong>Bench:</strong> ${bench.map(({u}) => `<span class="badge">${escapeHtml(u.beast)}${u.fainted ? ' (Fainted)' : ''}</span>`).join(' ') || 'None'}</div>
+      </div>
+    `;
+  };
+  $('#battleField').innerHTML = `
+    <div class="grid cols-2">
+      ${renderSide(battleState.p1)}
+      ${renderSide(battleState.p2)}
+    </div>
+    <div class="small" style="margin-top:10px">Turn ${battleState.turn}${battleState.terrain ? ' · Terrain: ' + battleState.terrain : ''}</div>
+  `;
+}
+
+function unitControlBlock(sideName, activePos, activeObj){
+  const unit = activeObj.unit;
+  const moveRows = unit.moves.map(m => state.data.moveByName[m]).filter(Boolean);
+  const moveOpts = ['<option value="">Select Action</option>', '<option value="block">Block</option>']
+    .concat(moveRows.map(m => `<option value="move:${escapeHtml(m.Move_Name)}">${escapeHtml(m.Move_Name)} (${escapeHtml(m.Move_Type)} ${escapeHtml(m.Category)})</option>`))
+    .concat(
+      battleState[sideName].party.map((ally, idx) => (!battleState[sideName].activeIdx.includes(idx) && !ally.fainted)
+        ? `<option value="switch:${idx}">Switch to ${escapeHtml(ally.beast)}</option>` : ''
+      ).filter(Boolean)
+    ).join('');
+  const targetOpts = `<option value="target1">Enemy Slot 1</option><option value="target2">Enemy Slot 2</option><option value="ally1">Ally Slot 1</option><option value="ally2">Ally Slot 2</option><option value="self">Self</option>`;
+  return `
+    <div class="slot">
+      <div><strong>${escapeHtml(unit.beast)}</strong></div>
+      <div class="small">Choose an action</div>
+      <div class="row" style="margin-top:6px">
+        <div><label>Action</label><select class="battleAction" data-side="${sideName}" data-pos="${activePos}">${moveOpts}</select></div>
+        <div><label>Target</label><select class="battleTarget" data-side="${sideName}" data-pos="${activePos}">${targetOpts}</select></div>
+      </div>
+    </div>
+  `;
+}
+
+function renderBattleControls(){
+  if(!battleState.active){
+    $('#battleControls').innerHTML = 'No active battle yet.';
+    return;
+  }
+  const p1Active = getActiveUnits(battleState.p1);
+  const p2Active = getActiveUnits(battleState.p2);
+  $('#battleControls').innerHTML = `
+    <div class="grid cols-2">
+      <div class="panel">
+        <h3>Player 1 Actions</h3>
+        ${p1Active.map((x, i) => unitControlBlock('p1', i, x)).join('')}
+      </div>
+      <div class="panel">
+        <h3>Player 2 Actions</h3>
+        ${p2Active.map((x, i) => unitControlBlock('p2', i, x)).join('')}
+      </div>
+    </div>
+    <div class="flex right" style="margin-top:10px"><button class="btn" id="resolveTurnBtn">Resolve Turn</button></div>
+  `;
+  $('#resolveTurnBtn').addEventListener('click', resolveTurn);
+  enableBattleAIButtons();
+}
+
+function performSwitch(side, activeIndexPosition, newPartyIdx){
+  const oldPartyIdx = side.activeIdx[activeIndexPosition];
+  if(oldPartyIdx === Number(newPartyIdx)) return;
+  side.activeIdx[activeIndexPosition] = Number(newPartyIdx);
+  const outgoing = side.party[oldPartyIdx];
+  outgoing.blocking = false;
+  const incoming = side.party[newPartyIdx];
+  logLine(`${side.label} switched ${outgoing.beast} out for ${incoming.beast}.`);
+}
+
+function autoReplaceFainted(side){
+  side.activeIdx = side.activeIdx.map(idx => {
+    const unit = side.party[idx];
+    if(unit && !unit.fainted) return idx;
+    const replacement = side.party.findIndex((u, i) => !u.fainted && !side.activeIdx.includes(i));
+    if(replacement >= 0){
+      logLine(`${side.label} sends out ${side.party[replacement].beast}.`);
+      return replacement;
+    }
+    return idx;
+  });
+}
+
+function applySupportMove(actorRef, targetRef, move){
+  const txt = String(move.Effect || '').toLowerCase();
+  const mname = String(move.Move_Name || '');
+  let used = false;
+  if(mname === 'Wish'){
+    actorRef.unit.temp.wish = 2;
+    logLine(`${actorRef.unit.beast} made a Wish.`);
+    used = true;
+  }
+  if(mname === 'Spore Shot'){
+    targetRef.unit.status = 'Poison';
+    logLine(`${targetRef.unit.beast} was infected by Spore Shot.`);
+    used = true;
+  }
+  if(mname === 'Silk Trap'){
+    actorRef.unit.blocking = true;
+    logLine(`${actorRef.unit.beast} set a Silk Trap.`);
+    used = true;
+  }
+
+
+  if(mname === 'Sharpen'){
+    actorRef.unit.temp.sharpenTurns = 2;
+    logLine(`${actorRef.unit.beast} became sharpened for 2 turns.`);
+    used = true;
+  }
+  if(mname === 'Ability Swap'){
+    const tmp = actorRef.unit.ability;
+    actorRef.unit.ability = targetRef.unit.ability;
+    targetRef.unit.ability = tmp;
+    logLine(`${actorRef.unit.beast} swapped abilities with ${targetRef.unit.beast}.`);
+    used = true;
+  }
+
+  if(txt.includes('heal')){
+    if(txt.includes('50%')) healUnit(targetRef.unit, 0.5, move.Move_Name);
+    else if(txt.includes('25%')) healUnit(targetRef.unit, 0.25, move.Move_Name);
+    else healUnit(targetRef.unit, 0.25, move.Move_Name);
+    used = true;
+  }
+
+  applyParsedStatText(targetRef.unit, move.Effect, move.Move_Name);
+  if(txt.includes('raise') || txt.includes('lower')) used = true;
+
+  const status = parseStatusFromText(move.Effect);
+  if(status && !targetRef.unit.status){
+    targetRef.unit.status = status;
+    logLine(`${targetRef.unit.beast} was afflicted with ${status}.`);
+    if(status === 'Stun') targetRef.unit.temp.stunned = true;
+    used = true;
+  }
+
+  if(applyTerrainFromText(move.Effect, actorRef.unit)) used = true;
+  if(!used) logLine(`${actorRef.unit.beast} used ${move.Move_Name}.`);
+}
+
+function applyEndOfTurn(){
+  for(const side of [battleState.p1, battleState.p2]){
+    for(const {unit} of getActiveUnits(side)){
+      if(unit.fainted) continue;
+      if(unit.status === 'Poison' || unit.status === 'Burn'){
+        const dmg = Math.max(1, Math.floor(unit.maxHP * 0.05));
+        damageUnit(unit, dmg, unit.status.toLowerCase());
+      }
+      if(unit.item === 'Hot Soup' && !unit.fainted) healUnit(unit, 0.10, 'Hot Soup');
+      if(unit.temp.sharpenTurns > 0) unit.temp.sharpenTurns -= 1;
+      unit.blocking = false;
+      unit.temp.stunned = false;
+    }
+    for(const {unit} of getActiveUnits(side)){
+      if(unit.fainted) continue;
+      if(unit.ability === 'Doctor'){
+        for(const {unit:ally} of getActiveUnits(side)){
+          if(ally !== unit && !ally.fainted) healUnit(ally, 1/16, 'Doctor');
+        }
+      }
+    }
+  }
+  if(battleState.terrain === 'Storm'){
+    for(const side of [battleState.p1, battleState.p2]){
+      for(const {unit} of getActiveUnits(side)){
+        if(unit.data.Type_1 === 'Flora' || unit.data.Type_2 === 'Flora') healUnit(unit, 1/6, 'Storm');
+      }
+    }
+  }
+}
+
+function resolveTurn(){
+  const actions = [];
+  $$('.battleAction').forEach(sel => {
+    const side = sel.dataset.side;
+    const activePos = Number(sel.dataset.pos);
+    const target = $(`.battleTarget[data-side="${side}"][data-pos="${activePos}"]`)?.value || 'target1';
+    const val = sel.value;
+    if(!val) return;
+    const activeRef = getActiveUnits(battleState[side])[activePos];
+    if(!activeRef || !activeRef.unit || activeRef.unit.fainted) return;
+    if(val.startsWith('switch:')){
+      actions.push({kind:'switch', side, activePos, priority:10, speed:9999, newIdx:Number(val.split(':')[1]), actor:activeRef.unit});
+    } else if(val === 'block'){
+      actions.push({kind:'block', side, activePos, priority:5, speed:getModifiedStat(activeRef.unit,'spe'), actor:activeRef.unit});
+    } else if(val.startsWith('move:')){
+      const moveName = val.split(':').slice(1).join(':');
+      const move = state.data.moveByName[moveName];
+      let priority = Number(move?.Priority || 0);
+      const speed = getModifiedStat(activeRef.unit, 'spe');
+      if(activeRef.unit.ability === 'Quick Draw' && String(move?.Category || '').toLowerCase() === 'special') priority += 1;
+      actions.push({kind:'move', side, activePos, priority, speed, move, targetMode:target, actor:activeRef.unit});
+    }
+  });
+
+  actions.sort((a,b) => (b.priority - a.priority) || (b.speed - a.speed));
+  logLine(`\nTurn ${battleState.turn}`);
+
+  for(const action of actions){
+    const side = battleState[action.side];
+    const actorRef = getActiveUnits(side).find(x => x.unit.beast === action.actor.beast);
+    if(!actorRef || actorRef.unit.fainted) continue;
+    if(actorRef.unit.temp.stunned){
+      logLine(`${actorRef.unit.beast} is stunned and cannot move this turn.`);
+      actorRef.unit.temp.stunned = false;
+      continue;
+    }
+
+    if(action.kind === 'switch'){ performSwitch(side, action.activePos, action.newIdx); continue; }
+    if(action.kind === 'block'){ actorRef.unit.blocking = true; logLine(`${actorRef.unit.beast} is blocking this turn.`); continue; }
+
+    const move = action.move;
+    if(!move) continue;
+    const targets = getTargetsForAction(action.side, action.targetMode, move, actorRef);
+    if(!targets.length) continue;
+
+    const isStatus = String(move.Category || '').toLowerCase() === 'status';
+    if(isStatus){
+      for(const t of targets) applySupportMove(actorRef, t, move);
+      continue;
+    }
+
+    const spread = targets.length > 1;
+    for(const targetRef of targets){
+      if(!targetRef || targetRef.unit.fainted) continue;
+      const hitChance = calcAccuracy(move, actorRef.unit, targetRef.unit);
+      const rollSeed = (actorRef.unit.beast.length + targetRef.unit.beast.length + battleState.turn + Number(move.Move_ID||0)) % 100;
+      const hit = hitChance >= 100 || rollSeed < hitChance;
+      if(!hit){
+        logLine(`${actorRef.unit.beast} used ${move.Move_Name}, but it missed ${targetRef.unit.beast}.`);
+        continue;
+      }
+      const dmg = calcDamage(actorRef.unit, targetRef.unit, move, spread);
+      if(dmg > 0) damageUnit(targetRef.unit, dmg, `${actorRef.unit.beast}'s ${move.Move_Name}`);
+      else logLine(`${actorRef.unit.beast} used ${move.Move_Name}.`);
+
+      if(!targetRef.unit.fainted){
+        const status = parseStatusFromText(move.Effect);
+        if(status && !targetRef.unit.status){
+          targetRef.unit.status = status;
+          logLine(`${targetRef.unit.beast} was afflicted with ${status}.`);
+          if(status === 'Stun') targetRef.unit.temp.stunned = true;
+        }
+        applyParsedStatText(targetRef.unit, move.Effect, move.Move_Name);
+        applyTerrainFromText(move.Effect, actorRef.unit);
+      }
+    }
+  }
+
+  applyEndOfTurn();
+  autoReplaceFainted(battleState.p1);
+  autoReplaceFainted(battleState.p2);
+
+  const p1Alive = battleState.p1.party.some(u => !u.fainted);
+  const p2Alive = battleState.p2.party.some(u => !u.fainted);
+  if(!p1Alive || !p2Alive){
+    const winner = p1Alive && !p2Alive ? battleState.p1.label : p2Alive && !p1Alive ? battleState.p2.label : 'No one';
+    logLine(`Battle over. Winner: ${winner}.`);
+    battleState.active = false;
+  } else {
+    battleState.turn += 1;
+  }
+  buildBattleField();
+  renderBattleControls();
+}
+
+function startBattle(){
+  stopAutoBattle();
+  const p1Team = parseExportedTeam($('#p1Import').value);
+  const p2Team = parseExportedTeam($('#p2Import').value);
+  if(!p1Team.length || !p2Team.length){
+    alert('Paste exported team text for both players first.');
+    return;
+  }
+  battleState.p1 = createBattleSide(p1Team, 'Player 1');
+  battleState.p2 = createBattleSide(p2Team, 'Player 2');
+  battleState.turn = 1;
+  battleState.log = ['Battle started.'];
+  battleState.terrain = '';
+  battleState.active = true;
+  applyEntryEffects(battleState.p1);
+  applyEntryEffects(battleState.p2);
+  buildBattleField();
+  renderBattleControls();
+  $('#battleLog').textContent = battleState.log.join('\n');
+}
+
+function resetBattle(){
+  stopAutoBattle();
+  battleState.active = false;
+  battleState.turn = 1;
+  battleState.p1 = null;
+  battleState.p2 = null;
+  battleState.terrain = '';
+  battleState.log = [];
+  $('#battleField').textContent = 'Load two teams and press Start Battle.';
+  $('#battleControls').textContent = 'No active battle yet.';
+  $('#battleLog').textContent = 'No battle started.';
+}
+
+
+function populateCalcUI(){
+  const beasts = state.data.beasts.map(b => b.Beast).sort((a,b)=>a.localeCompare(b));
+  const beastOpts = ['<option value="">Select Beast</option>'].concat(beasts.map(b=>`<option>${escapeHtml(b)}</option>`)).join('');
+  const attacker = document.getElementById('calcAttacker');
+  const defender = document.getElementById('calcDefender');
+  if(attacker) attacker.innerHTML = beastOpts;
+  if(defender) defender.innerHTML = beastOpts;
+
+  function refreshAttackerFields(){
+    const beast = attacker.value;
+    const abs = beast ? (state.data.abilitiesByBeast[beast] || []) : [];
+    const moves = beast ? [...new Set((state.data.movesByBeast[beast] || []).map(x=>x.Move_Name))] : [];
+    document.getElementById('calcAttackerAbility').innerHTML = ['<option value="">No Ability</option>'].concat(abs.map(a=>`<option>${escapeHtml(a)}</option>`)).join('');
+    document.getElementById('calcMove').innerHTML = ['<option value="">Select Move</option>'].concat(moves.map(m=>`<option>${escapeHtml(m)}</option>`)).join('');
+  }
+  if(attacker){
+    attacker.addEventListener('change', refreshAttackerFields);
+    refreshAttackerFields();
+  }
+  document.getElementById('runCalcBtn')?.addEventListener('click', runDamageCalc);
+}
+
+function computeDamageWithContext(attackerName, defenderName, moveName, attackerAbility='', terrain='', blocking=false){
+  const attacker = state.data.beastByName[attackerName];
+  const defender = state.data.beastByName[defenderName];
+  const move = state.data.moveByName[moveName];
+  if(!attacker || !defender || !move) return null;
+
+  const aUnit = {
+    beast: attackerName,
+    ability: attackerAbility || '',
+    data: attacker,
+    statMods: {atk:1, def:1, spa:1, spd:1, spe:1, eva:1},
+    status: '',
+    blocking: false,
+    temp: {sharpenTurns:0, stunned:false}
+  };
+  const dUnit = {
+    beast: defenderName,
+    ability: '',
+    data: defender,
+    statMods: {atk:1, def:1, spa:1, spd:1, spe:1, eva:1},
+    status: '',
+    blocking: !!blocking,
+    temp: {sharpenTurns:0, stunned:false}
+  };
+
+  const prevTerrain = battleState.terrain;
+  battleState.terrain = terrain || '';
+
+  const category = String(move.Category || 'Physical').toLowerCase();
+  const atkStat = category === 'special' ? getModifiedStat(aUnit, 'spa') : getModifiedStat(aUnit, 'atk');
+  const defStat = category === 'special' ? getModifiedStat(dUnit, 'spd') : getModifiedStat(dUnit, 'def');
+  const stab = [attacker.Type_1, attacker.Type_2].includes(move.Move_Type) ? 1.25 : 1;
+  const type = typeMultiplier(move.Move_Type, defender.Type_1, defender.Type_2);
+  const spread = String(move.Target_Class || '').toLowerCase().includes('both') ? 0.75 : 1;
+  const dmg = calcDamage(aUnit, dUnit, move, spread < 1);
+  const hp = hpFromHealthStat(defender.Health);
+  battleState.terrain = prevTerrain;
+
+  return {
+    attacker, defender, move,
+    atkStat, defStat, stab, type, spread, damage:dmg, hp,
+    percent: ((dmg / hp) * 100).toFixed(1)
+  };
+}
+
+function runDamageCalc(){
+  const attacker = document.getElementById('calcAttacker')?.value || '';
+  const defender = document.getElementById('calcDefender')?.value || '';
+  const move = document.getElementById('calcMove')?.value || '';
+  const ability = document.getElementById('calcAttackerAbility')?.value || '';
+  const terrain = document.getElementById('calcTerrain')?.value || '';
+  const blocking = document.getElementById('calcBlocking')?.value === '1';
+
+  const out = computeDamageWithContext(attacker, defender, move, ability, terrain, blocking);
+  const el = document.getElementById('calcResult');
+  if(!out){
+    el.textContent = 'Choose valid attacker, defender, and move.';
+    return;
+  }
+  el.innerHTML = `
+    <p><strong>${escapeHtml(attacker)}</strong> using <strong>${escapeHtml(move)}</strong> into <strong>${escapeHtml(defender)}</strong></p>
+    <p><strong>Damage:</strong> ${out.damage} / ${out.hp} HP (${out.percent}%)</p>
+    <p><strong>Attack Stat Used:</strong> ${out.atkStat}</p>
+    <p><strong>Defense Stat Used:</strong> ${out.defStat}</p>
+    <p><strong>STAB:</strong> ${out.stab}x · <strong>Type:</strong> ${out.type}x · <strong>Spread Modifier:</strong> ${out.spread}x</p>
+    <p><strong>Terrain:</strong> ${escapeHtml(terrain || 'None')} · <strong>Blocking:</strong> ${blocking ? 'Yes' : 'No'}</p>
+  `;
+}
+
+function getSideAndEnemy(sideName){
+  return sideName === 'p1' ? [battleState.p1, battleState.p2] : [battleState.p2, battleState.p1];
+}
+
+function aiChooseAction(sideName, activePos, activeRef){
+  const unit = activeRef.unit;
+  if(!unit || unit.fainted) return null;
+
+  const legalMoves = unit.moves.map(m => state.data.moveByName[m]).filter(Boolean);
+  const [side, enemy] = getSideAndEnemy(sideName);
+  const enemyTargets = getActiveUnits(enemy);
+  if(!enemyTargets.length) return null;
+
+  // If low HP, occasionally block
+  if(unit.currentHP / unit.maxHP <= 0.30){
+    return {kind:'block', side:sideName, activePos, priority:5, speed:getModifiedStat(unit,'spe'), actor:unit};
+  }
+
+  // Score moves by expected damage and utility
+  let best = null;
+  for(const move of legalMoves){
+    const category = String(move.Category || '').toLowerCase();
+    const isStatus = category === 'status';
+    if(isStatus){
+      let score = 10;
+      const txt = String(move.Effect || '').toLowerCase();
+      if(move.Move_Name === 'Sharpen') score = 65;
+      else if(move.Move_Name === 'Wish') score = 45;
+      else if(move.Move_Name === 'Silk Trap') score = 50;
+      else if(txt.includes('heal')) score = 40;
+      else if(txt.includes('poison') || txt.includes('burn') || txt.includes('freeze') || txt.includes('stun')) score = 35;
+      else if(txt.includes('raise') || txt.includes('lower')) score = 30;
+
+      const targetMode = move.Move_Name === 'Sharpen' || move.Move_Name === 'Wish' || move.Move_Name === 'Silk Trap' ? 'self' : 'target1';
+      const cand = {kind:'move', side:sideName, activePos, priority:Number(move.Priority || 0), speed:getModifiedStat(unit,'spe'), move, targetMode, actor:unit, score};
+      if(!best || cand.score > best.score) best = cand;
+    } else {
+      for(let i=0;i<enemyTargets.length;i++){
+        const tgt = enemyTargets[i];
+        const est = calcDamage(unit, tgt.unit, move, enemyTargets.length>1 && String(move.Target_Class||'').toLowerCase().includes('both'));
+        const koBonus = est >= tgt.unit.currentHP ? 50 : 0;
+        const type = typeMultiplier(move.Move_Type, tgt.unit.data.Type_1, tgt.unit.data.Type_2);
+        const score = est + koBonus + (type*10);
+        const cand = {kind:'move', side:sideName, activePos, priority:Number(move.Priority || 0), speed:getModifiedStat(unit,'spe'), move, targetMode:i===1?'target2':'target1', actor:unit, score};
+        if(unit.ability === 'Quick Draw' && String(move.Category || '').toLowerCase() === 'special') cand.priority += 1;
+        if(!best || cand.score > best.score) best = cand;
+      }
+    }
+  }
+
+  // If nothing, block
+  if(!best) return {kind:'block', side:sideName, activePos, priority:5, speed:getModifiedStat(unit,'spe'), actor:unit};
+  return best;
+}
+
+function fillAIForSide(sideName){
+  const side = battleState[sideName];
+  const actives = getActiveUnits(side);
+  actives.forEach((activeRef, idx) => {
+    const choice = aiChooseAction(sideName, idx, activeRef);
+    if(!choice) return;
+    const actionSel = document.querySelector(`.battleAction[data-side="${sideName}"][data-pos="${idx}"]`);
+    const targetSel = document.querySelector(`.battleTarget[data-side="${sideName}"][data-pos="${idx}"]`);
+    if(!actionSel || !targetSel) return;
+    if(choice.kind === 'block'){
+      actionSel.value = 'block';
+    } else if(choice.kind === 'move'){
+      actionSel.value = 'move:' + choice.move.Move_Name;
+      targetSel.value = choice.targetMode || 'target1';
+    } else if(choice.kind === 'switch'){
+      actionSel.value = 'switch:' + choice.newIdx;
+    }
+  });
+}
+
+
+function scoreMoveChoice(sideName, activeRef, move, targetRef){
+  const unit = activeRef.unit;
+  const category = String(move.Category || '').toLowerCase();
+  const isStatus = category === 'status';
+  let score = 0;
+
+  if(isStatus){
+    const txt = String(move.Effect || '').toLowerCase();
+    if(move.Move_Name === 'Sharpen'){
+      score += unit.temp && unit.temp.sharpenTurns > 0 ? 12 : 72;
+      if(unit.currentHP / unit.maxHP < 0.45) score -= 18;
+    } else if(move.Move_Name === 'Wish'){
+      score += unit.currentHP / unit.maxHP < 0.6 ? 55 : 24;
+    } else if(move.Move_Name === 'Silk Trap'){
+      score += unit.currentHP / unit.maxHP < 0.5 ? 58 : 26;
+    } else if(txt.includes('heal')){
+      score += unit.currentHP / unit.maxHP < 0.55 ? 48 : 18;
+    } else if(txt.includes('poison') || txt.includes('burn') || txt.includes('freeze') || txt.includes('stun')){
+      score += (targetRef && !targetRef.unit.status) ? 42 : 8;
+    } else if(txt.includes('raise') || txt.includes('lower')){
+      score += 28;
+    } else {
+      score += 12;
+    }
+    if(battleState.turn <= 2 && (move.Move_Name === 'Sharpen' || txt.includes('raise'))) score += 10;
+    return score;
+  }
+
+  const enemy = sideName === 'p1' ? battleState.p2 : battleState.p1;
+  const enemyActives = getActiveUnits(enemy);
+  const spread = enemyActives.length > 1 && String(move.Target_Class || '').toLowerCase().includes('both');
+  const est = calcDamage(unit, targetRef.unit, move, spread);
+  const hpFrac = targetRef.unit.currentHP / Math.max(1, targetRef.unit.maxHP);
+  const koBonus = est >= targetRef.unit.currentHP ? 70 : 0;
+  const type = typeMultiplier(move.Move_Type, targetRef.unit.data.Type_1, targetRef.unit.data.Type_2);
+  score += est + koBonus + (type * 12);
+  if(hpFrac < 0.35) score += 15;
+  if(spread) score += 10;
+  if(unit.currentHP / unit.maxHP < 0.3 && !koBonus) score -= 10;
+  return score;
+}
+
+function aiChooseAction(sideName, activePos, activeRef){
+  const unit = activeRef.unit;
+  if(!unit || unit.fainted) return null;
+
+  const legalMoves = unit.moves.map(m => state.data.moveByName[m]).filter(Boolean);
+  const side = battleState[sideName];
+  const enemy = sideName === 'p1' ? battleState.p2 : battleState.p1;
+  const enemyTargets = getActiveUnits(enemy);
+
+  if(unit.currentHP / unit.maxHP <= 0.18){
+    const benchIdx = side.party.findIndex((ally, idx) => !ally.fainted && !side.activeIdx.includes(idx) && ally.currentHP / ally.maxHP > 0.6);
+    if(benchIdx >= 0){
+      return {kind:'switch', side:sideName, activePos, priority:10, speed:9999, newIdx:benchIdx, actor:unit, score:90};
+    }
+  }
+
+  if(unit.currentHP / unit.maxHP <= 0.30){
+    return {kind:'block', side:sideName, activePos, priority:5, speed:getModifiedStat(unit,'spe'), actor:unit, score:65};
+  }
+
+  let best = null;
+  for(const move of legalMoves){
+    const isStatus = String(move.Category || '').toLowerCase() === 'status';
+    if(isStatus){
+      let targets = [];
+      if(['Sharpen','Wish','Silk Trap'].includes(move.Move_Name)){
+        targets = [activeRef];
+      } else {
+        targets = enemyTargets.length ? [enemyTargets[0]] : [activeRef];
+      }
+      for(const tgt of targets){
+        const score = scoreMoveChoice(sideName, activeRef, move, tgt);
+        const targetMode = tgt === activeRef ? 'self' : 'target1';
+        const cand = {kind:'move', side:sideName, activePos, priority:Number(move.Priority || 0), speed:getModifiedStat(unit,'spe'), move, targetMode, actor:unit, score};
+        if(unit.ability === 'Quick Draw' && String(move.Category || '').toLowerCase() === 'special') cand.priority += 1;
+        if(!best || cand.score > best.score) best = cand;
+      }
+    } else {
+      for(let i = 0; i < enemyTargets.length; i++){
+        const tgt = enemyTargets[i];
+        const score = scoreMoveChoice(sideName, activeRef, move, tgt);
+        const cand = {kind:'move', side:sideName, activePos, priority:Number(move.Priority || 0), speed:getModifiedStat(unit,'spe'), move, targetMode:i===1?'target2':'target1', actor:unit, score};
+        if(unit.ability === 'Quick Draw' && String(move.Category || '').toLowerCase() === 'special') cand.priority += 1;
+        if(!best || cand.score > best.score) best = cand;
+      }
+    }
+  }
+
+  if(!best) return {kind:'block', side:sideName, activePos, priority:5, speed:getModifiedStat(unit,'spe'), actor:unit, score:10};
+  return best;
+}
+
+function fillAIForSide(sideName){
+  const side = battleState[sideName];
+  const actives = getActiveUnits(side);
+  actives.forEach((activeRef, idx) => {
+    const choice = aiChooseAction(sideName, idx, activeRef);
+    if(!choice) return;
+    const actionSel = document.querySelector(`.battleAction[data-side="${sideName}"][data-pos="${idx}"]`);
+    const targetSel = document.querySelector(`.battleTarget[data-side="${sideName}"][data-pos="${idx}"]`);
+    if(!actionSel || !targetSel) return;
+    if(choice.kind === 'block'){
+      actionSel.value = 'block';
+    } else if(choice.kind === 'move'){
+      actionSel.value = 'move:' + choice.move.Move_Name;
+      targetSel.value = choice.targetMode || 'target1';
+    } else if(choice.kind === 'switch'){
+      actionSel.value = 'switch:' + choice.newIdx;
+    }
+  });
+}
+
+let autoBattleTimer = null;
+function stopAutoBattle(){
+  if(autoBattleTimer){
+    clearInterval(autoBattleTimer);
+    autoBattleTimer = null;
+  }
+  const btn = document.getElementById('autoBattleBtn');
+  if(btn) btn.textContent = 'Start Auto Battle</button>
+    <button class="btn" id="batchTestBtn">Run 50 Battle Test';
+}
+function startAutoBattle(){
+  if(!battleState.active) return;
+  stopAutoBattle();
+  const btn = document.getElementById('autoBattleBtn');
+  if(btn) btn.textContent = 'Stop Auto Battle';
+  autoBattleTimer = setInterval(() => {
+    if(!battleState.active){
+      stopAutoBattle();
+      return;
+    }
+    fillAIForSide('p1');
+    fillAIForSide('p2');
+    const resolveBtn = document.getElementById('resolveTurnBtn');
+    if(resolveBtn) resolveBtn.click();
+    if(!battleState.active) stopAutoBattle();
+  }, 450);
+}
+
+
+function enableBattleAIButtons(){
+  const controls = document.getElementById('battleControls');
+  if(!controls || !battleState.active) return;
+  const oldBar = document.getElementById('aiControlBar');
+  if(oldBar) oldBar.remove();
+
+  const bar = document.createElement('div');
+  bar.className = 'flex right';
+  bar.style.marginTop = '10px';
+  bar.id = 'aiControlBar';
+  bar.innerHTML = `
+    <button class="btn" id="aiP1Btn">AI Fill P1</button>
+    <button class="btn" id="aiP2Btn">AI Fill P2</button>
+    <button class="btn" id="aiBothBtn">AI Fill Both</button>
+    <button class="btn" id="aiResolveBtn">AI Resolve Turn</button>
+    <button class="btn" id="autoBattleBtn">Start Auto Battle</button>
+    <button class="btn" id="batchTestBtn">Run 50 Battle Test</button>
+  `;
+  controls.appendChild(bar);
+
+  document.getElementById('aiP1Btn').addEventListener('click', ()=>fillAIForSide('p1'));
+  document.getElementById('aiP2Btn').addEventListener('click', ()=>fillAIForSide('p2'));
+  document.getElementById('aiBothBtn').addEventListener('click', ()=>{
+    fillAIForSide('p1');
+    fillAIForSide('p2');
+  });
+  document.getElementById('aiResolveBtn').addEventListener('click', ()=>{
+    fillAIForSide('p1');
+    fillAIForSide('p2');
+    const btn = document.getElementById('resolveTurnBtn');
+    if(btn) btn.click();
+  });
+  document.getElementById('autoBattleBtn').addEventListener('click', ()=>{
+    if(autoBattleTimer) stopAutoBattle();
+    else startAutoBattle();
+  });
+}
+
+
+
+let batchRunning=false;
+function runBatchTest(count=50){
+  if(batchRunning) return;
+  batchRunning=true;
+  let p1wins=0,p2wins=0,draws=0,done=0;
+  function single(){
+    if(done>=count){
+      alert(`Batch finished: P1 ${p1wins} wins | P2 ${p2wins} wins | Draws ${draws}`);
+      batchRunning=false;
+      return;
+    }
+    resetBattle();
+    startBattle();
+    let steps=0;
+    const loop=setInterval(()=>{
+      if(!battleState.active || steps>200){
+        clearInterval(loop);
+        if(!battleState.active){
+          const alive1=battleState.p1.party.filter(x=>!x.fainted).length;
+          const alive2=battleState.p2.party.filter(x=>!x.fainted).length;
+          if(alive1>alive2) p1wins++;
+          else if(alive2>alive1) p2wins++;
+          else draws++;
+        }else{
+          draws++;
+        }
+        done++;
+        single();
+        return;
+      }
+      fillAIForSide('p1');
+      fillAIForSide('p2');
+      document.getElementById('resolveTurnBtn')?.click();
+      steps++;
+    },0);
+  }
+  single();
+}
+document.addEventListener('click',e=>{
+  if(e.target && e.target.id==='batchTestBtn'){
+    runBatchTest(50);
+  }
+});
+
+
+function renderMetaTable(title, headers, rows){
+  const head = `<thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead>`;
+  const body = `<tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
+  document.getElementById('metaOutput').innerHTML = `<h3>${title}</h3><table>${head}${body}</table>`;
+}
+
+function metaTopBST(){
+  const rows = [...state.data.beasts]
+    .sort((a,b)=>Number(b.BST||0)-Number(a.BST||0))
+    .slice(0,20)
+    .map(b=>[escapeHtml(b.Beast), b.BST, escapeHtml(b.Type || [b.Type_1,b.Type_2].filter(Boolean).join('/')), escapeHtml(b.Primary_Role || '')]);
+  renderMetaTable('Top 20 by BST', ['Beast','BST','Type','Role'], rows);
+}
+
+function metaTopLegalBST(){
+  const rows = [...state.data.beasts]
+    .filter(b=>String(b.Competitive_Legal || '').toLowerCase() === 'yes')
+    .sort((a,b)=>Number(b.BST||0)-Number(a.BST||0))
+    .slice(0,20)
+    .map(b=>[escapeHtml(b.Beast), b.BST, escapeHtml(b.Type || [b.Type_1,b.Type_2].filter(Boolean).join('/')), escapeHtml(b.Primary_Role || '')]);
+  renderMetaTable('Top 20 Legal by BST', ['Beast','BST','Type','Role'], rows);
+}
+
+function metaTopMoveCount(){
+  const rows = [...state.data.beasts]
+    .sort((a,b)=>Number(b.Move_Count||0)-Number(a.Move_Count||0))
+    .slice(0,20)
+    .map(b=>[escapeHtml(b.Beast), b.Move_Count, escapeHtml(b.Type || [b.Type_1,b.Type_2].filter(Boolean).join('/')), escapeHtml(b.Primary_Role || '')]);
+  renderMetaTable('Top 20 by Move Count', ['Beast','Moves','Type','Role'], rows);
+}
+
+function metaRoleCounts(){
+  const counts = {};
+  for(const b of state.data.beasts){
+    const role = String(b.Primary_Role || 'Unknown');
+    counts[role] = (counts[role] || 0) + 1;
+  }
+  const rows = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([role,count])=>[escapeHtml(role), count]);
+  renderMetaTable('Primary Role Counts', ['Role','Count'], rows);
+}
+
+async function metaAnalyzeLoadedTeams(){
+  const count = Number(document.getElementById('metaBattleCount')?.value || 25);
+  const p1Txt = document.getElementById('p1Import')?.value || '';
+  const p2Txt = document.getElementById('p2Import')?.value || '';
+  if(!p1Txt.trim() || !p2Txt.trim()){
+    document.getElementById('metaOutput').innerHTML = '<div class="bad">Load both teams in the Battle tab first.</div>';
+    return;
+  }
+
+  document.getElementById('metaOutput').innerHTML = `<div class="small">Running ${count} AI vs AI battles...</div>`;
+
+  let p1wins = 0, p2wins = 0, draws = 0;
+  for(let i=0;i<count;i++){
+    resetBattle();
+    document.getElementById('p1Import').value = p1Txt;
+    document.getElementById('p2Import').value = p2Txt;
+    startBattle();
+
+    let steps = 0;
+    while(battleState.active && steps < 250){
+      fillAIForSide('p1');
+      fillAIForSide('p2');
+      const btn = document.getElementById('resolveTurnBtn');
+      if(btn) btn.click();
+      steps++;
+      await new Promise(r=>setTimeout(r,0));
+    }
+
+    const p1Alive = battleState.p1?.party?.filter(x=>!x.fainted).length || 0;
+    const p2Alive = battleState.p2?.party?.filter(x=>!x.fainted).length || 0;
+    if(p1Alive > p2Alive) p1wins++;
+    else if(p2Alive > p1Alive) p2wins++;
+    else draws++;
+  }
+
+  const total = Math.max(1, p1wins + p2wins + draws);
+  const rows = [
+    ['Player 1 Wins', p1wins, ((p1wins/total)*100).toFixed(1) + '%'],
+    ['Player 2 Wins', p2wins, ((p2wins/total)*100).toFixed(1) + '%'],
+    ['Draws', draws, ((draws/total)*100).toFixed(1) + '%'],
+  ];
+  renderMetaTable(`Loaded Team Matchup (${count} battles)`, ['Result','Count','Rate'], rows);
+}
+
+function initMetaAnalyzer(){
+  document.getElementById('fullMetaRunBtn')?.addEventListener('click', runFullMetaSimulator);
+  document.getElementById('metaTopBSTBtn')?.addEventListener('click', metaTopBST);
+  document.getElementById('metaTopLegalBtn')?.addEventListener('click', metaTopLegalBST);
+  document.getElementById('metaTopMoveCountBtn')?.addEventListener('click', metaTopMoveCount);
+  document.getElementById('metaRoleCountsBtn')?.addEventListener('click', metaRoleCounts);
+  document.getElementById('metaRunLoadedTeamsBtn')?.addEventListener('click', metaAnalyzeLoadedTeams);
+}
+
+
+const metaSampleTeams = [
+`Beast A
+Move1
+Move2
+Move3
+Move4
+
+Beast B
+Move1
+Move2
+Move3
+Move4`,
+
+`Beast C
+Move1
+Move2
+Move3
+Move4
+
+Beast D
+Move1
+Move2
+Move3
+Move4`,
+
+`Beast E
+Move1
+Move2
+Move3
+Move4
+
+Beast F
+Move1
+Move2
+Move3
+Move4`
+];
+
+async function runMetaGauntlet(){
+  const p1Txt = document.getElementById('p1Import')?.value || '';
+  if(!p1Txt.trim()){
+    document.getElementById('metaOutput').innerHTML = '<div class="bad">Load a team in Battle tab first.</div>';
+    return;
+  }
+
+  let totalWins = 0;
+  let totalLoss = 0;
+  let totalDraw = 0;
+  let battles = 0;
+
+  for(const enemyTeam of metaSampleTeams){
+    document.getElementById('p2Import').value = enemyTeam;
+
+    resetBattle();
+    document.getElementById('p1Import').value = p1Txt;
+    startBattle();
+
+    let steps=0;
+    while(battleState.active && steps<250){
+      fillAIForSide('p1');
+      fillAIForSide('p2');
+      document.getElementById('resolveTurnBtn')?.click();
+      steps++;
+      await new Promise(r=>setTimeout(r,0));
+    }
+
+    const p1Alive = battleState.p1?.party?.filter(x=>!x.fainted).length || 0;
+    const p2Alive = battleState.p2?.party?.filter(x=>!x.fainted).length || 0;
+
+    if(p1Alive>p2Alive) totalWins++;
+    else if(p2Alive>p1Alive) totalLoss++;
+    else totalDraw++;
+
+    battles++;
+  }
+
+  const rows = [
+    ['Wins', totalWins],
+    ['Losses', totalLoss],
+    ['Draws', totalDraw]
+  ];
+
+  renderMetaTable('Meta Gauntlet Result ('+battles+' teams)', ['Result','Count'], rows);
+}
+
+document.addEventListener('click',e=>{
+  if(e.target && e.target.id==='metaGauntletBtn'){
+    runMetaGauntlet();
+  }
+});
+
+
+function sampleArray(arr, n){
+  const copy = [...arr];
+  for(let i = copy.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, n);
+}
+
+function generateRandomLegalTeam(candidateBeasts, teamSize=6, bstCap=3400){
+  const shuffled = sampleArray(candidateBeasts, candidateBeasts.length);
+  const team = [];
+  let bst = 0;
+  for(const beast of shuffled){
+    const bBst = Number(beast.BST || 0);
+    if(team.length >= teamSize) break;
+    if(team.some(x => x.Beast === beast.Beast)) continue;
+    if(bst + bBst > bstCap) continue;
+
+    const abilities = state.data.abilitiesByBeast[beast.Beast] || [];
+    const movePool = [...new Set((state.data.movesByBeast[beast.Beast] || []).map(x => x.Move_Name))];
+    if(movePool.length < 4) continue;
+
+    const slot = {
+      beast: beast.Beast,
+      ability: abilities[0] || '',
+      item: '',
+      moves: sampleArray(movePool, 4),
+      bring: team.length < 4
+    };
+    team.push(slot);
+    bst += bBst;
+  }
+  return team.length === teamSize ? team : null;
+}
+
+function teamToExportText(team){
+  return team.map(slot => {
+    const beast = state.data.beastByName[slot.beast];
+    const types = [beast.Type_1, beast.Type_2].filter(Boolean).join('/');
+    return `${slot.beast} @ ${slot.item || 'No Item'}
+Ability: ${slot.ability || ''}
+Types: ${types}
+Bring: ${slot.bring ? 'Yes' : 'No'}
+- ${slot.moves[0] || ''}
+- ${slot.moves[1] || ''}
+- ${slot.moves[2] || ''}
+- ${slot.moves[3] || ''}`.trim();
+  }).join('\n\n');
+}
+
+function summarizeTeamEntities(team, tracker){
+  for(const slot of team){
+    if(!slot || !slot.beast) continue;
+    if(!tracker.beastPicks[slot.beast]) tracker.beastPicks[slot.beast] = 0;
+    tracker.beastPicks[slot.beast] += 1;
+
+    if(slot.ability){
+      if(!tracker.abilityPicks[slot.ability]) tracker.abilityPicks[slot.ability] = 0;
+      tracker.abilityPicks[slot.ability] += 1;
+    }
+  }
+}
+
+function recordTeamOutcome(team, didWin, tracker){
+  for(const slot of team){
+    if(!slot || !slot.beast) continue;
+    if(!tracker.beastStats[slot.beast]) tracker.beastStats[slot.beast] = {games:0,wins:0};
+    tracker.beastStats[slot.beast].games += 1;
+    if(didWin) tracker.beastStats[slot.beast].wins += 1;
+
+    if(slot.ability){
+      if(!tracker.abilityStats[slot.ability]) tracker.abilityStats[slot.ability] = {games:0,wins:0};
+      tracker.abilityStats[slot.ability].games += 1;
+      if(didWin) tracker.abilityStats[slot.ability].wins += 1;
+    }
+  }
+}
+
+function sortWinrateTable(obj, minGames=1, topN=20){
+  return Object.entries(obj)
+    .filter(([k,v]) => (v.games || 0) >= minGames)
+    .map(([k,v]) => {
+      const wr = v.games ? (100 * v.wins / v.games) : 0;
+      return [k, v.games, v.wins, wr];
+    })
+    .sort((a,b) => b[3] - a[3] || b[1] - a[1])
+    .slice(0, topN);
+}
+
+function renderFullMetaResults(tracker, battleCount){
+  const beastRows = sortWinrateTable(tracker.beastStats, Math.max(2, Math.floor(battleCount/10)), 20)
+    .map(r => [escapeHtml(r[0]), r[1], r[2], r[3].toFixed(1) + '%']);
+  const abilityRows = sortWinrateTable(tracker.abilityStats, Math.max(2, Math.floor(battleCount/10)), 20)
+    .map(r => [escapeHtml(r[0]), r[1], r[2], r[3].toFixed(1) + '%']);
+
+  const summary = `
+    <div class="kpi">
+      <div class="card"><div class="small">Battles</div><div>${battleCount}</div></div>
+      <div class="card"><div class="small">Unique Beasts Seen</div><div>${Object.keys(tracker.beastStats).length}</div></div>
+      <div class="card"><div class="small">Unique Abilities Seen</div><div>${Object.keys(tracker.abilityStats).length}</div></div>
+    </div>
+  `;
+
+  const beastTable = `<h3 style="margin-top:14px">Top Beast Win Rates</h3><table><thead><tr><th>Beast</th><th>Games</th><th>Wins</th><th>Win Rate</th></tr></thead><tbody>${beastRows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  const abilityTable = `<h3 style="margin-top:14px">Top Ability Win Rates</h3><table><thead><tr><th>Ability</th><th>Games</th><th>Wins</th><th>Win Rate</th></tr></thead><tbody>${abilityRows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+
+  document.getElementById('metaOutput').innerHTML = summary + beastTable + abilityTable;
+}
+
+async function runFullMetaSimulator(){
+  const battleCount = Number(document.getElementById('fullMetaBattleCount')?.value || 50);
+  const poolSize = Number(document.getElementById('fullMetaTeamPool')?.value || 48);
+  const teamSize = Number(document.getElementById('fullMetaTeamSize')?.value || 6);
+
+  const candidates = [...state.data.beasts]
+    .filter(b => String(b.Competitive_Legal || '').toLowerCase() === 'yes')
+    .sort((a,b)=>Number(b.BST||0)-Number(a.BST||0))
+    .slice(0, poolSize);
+
+  const tracker = {
+    beastStats: {},
+    abilityStats: {},
+    beastPicks: {},
+    abilityPicks: {},
+  };
+
+  document.getElementById('metaOutput').innerHTML = `<div class="small">Running ${battleCount} full-meta simulation battles...</div>`;
+
+  let finished = 0;
+  while(finished < battleCount){
+    const team1 = generateRandomLegalTeam(candidates, teamSize, 3400);
+    const team2 = generateRandomLegalTeam(candidates, teamSize, 3400);
+    if(!team1 || !team2) continue;
+
+    summarizeTeamEntities(team1, tracker);
+    summarizeTeamEntities(team2, tracker);
+
+    document.getElementById('p1Import').value = teamToExportText(team1);
+    document.getElementById('p2Import').value = teamToExportText(team2);
+
+    resetBattle();
+    startBattle();
+
+    let steps = 0;
+    while(battleState.active && steps < 250){
+      fillAIForSide('p1');
+      fillAIForSide('p2');
+      const btn = document.getElementById('resolveTurnBtn');
+      if(btn) btn.click();
+      steps++;
+      await new Promise(r=>setTimeout(r,0));
+    }
+
+    const p1Alive = battleState.p1?.party?.filter(x=>!x.fainted).length || 0;
+    const p2Alive = battleState.p2?.party?.filter(x=>!x.fainted).length || 0;
+
+    if(p1Alive > p2Alive){
+      recordTeamOutcome(team1, true, tracker)
+      recordTeamOutcome(team2, false, tracker)
+    } else if(p2Alive > p1Alive){
+      recordTeamOutcome(team1, false, tracker)
+      recordTeamOutcome(team2, true, tracker)
+    } else {
+      recordTeamOutcome(team1, false, tracker)
+      recordTeamOutcome(team2, false, tracker)
+    }
+
+    finished += 1;
+    if(finished % 10 === 0){
+      document.getElementById('metaOutput').innerHTML = `<div class="small">Running ${battleCount} full-meta simulation battles... ${finished}/${battleCount}</div>`;
+      await new Promise(r=>setTimeout(r,0));
+    }
+  }
+
+  renderFullMetaResults(tracker, battleCount);
+}
+
+
+function renderMetaDashboard(){
+  if(!lastMetaTracker){ alert('Run the meta simulator first.'); return; }
+
+  const beastUsage = Object.entries(lastMetaTracker.beastStats || {})
+    .map(([k,v])=>({name:k,games:v.games,wins:v.wins,wr:v.games?(v.wins/v.games):0}))
+    .sort((a,b)=>b.games-a.games)
+    .slice(0,15);
+
+  const abilityUsage = Object.entries(lastMetaTracker.abilityStats || {})
+    .map(([k,v])=>({name:k,games:v.games,wins:v.wins,wr:v.games?(v.wins/v.games):0}))
+    .sort((a,b)=>b.games-a.games)
+    .slice(0,15);
+
+  function list(title,data){
+    return `<h3>${title}</h3><table>
+    <thead><tr><th>Name</th><th>Games</th><th>Win%</th></tr></thead>
+    <tbody>
+    ${data.map(d=>`<tr><td>${d.name}</td><td>${d.games}</td><td>${(d.wr*100).toFixed(1)}</td></tr>`).join("")}
+    </tbody></table>`;
+  }
+
+  document.getElementById("metaOutput").innerHTML =
+    list("Most Used Beasts",beastUsage) +
+    list("Most Used Abilities",abilityUsage);
+}
+
+document.addEventListener("click",e=>{
+ if(e.target && e.target.id==="metaDashboardBtn"){
+   renderMetaDashboard();
+ }
+});
+
+
+function generateMetaTeams(){
+  if(!lastMetaTracker){ alert('Run the meta simulator first.'); return; }
+
+  const beasts = Object.entries(lastMetaTracker.beastStats || {})
+    .map(([name,stats])=>({name,wr:stats.games?(stats.wins/stats.games):0,games:stats.games}))
+    .filter(x=>x.games>5)
+    .sort((a,b)=>b.wr-a.wr)
+    .slice(0,20);
+
+  const teams = [];
+
+  for(let i=0;i<10;i++){
+    const team = [];
+    while(team.length<4){
+      const pick = beasts[Math.floor(Math.random()*beasts.length)];
+      if(!team.includes(pick.name)) team.push(pick.name);
+    }
+    teams.push(team);
+  }
+
+  const htmlOut = teams.map((t,i)=>{
+    return `<h3>Team ${i+1}</h3><ul>${t.map(b=>`<li>${b}</li>`).join("")}</ul>`;
+  }).join("");
+
+  document.getElementById("metaOutput").innerHTML =
+    "<h2>Suggested Top Teams</h2>" + htmlOut;
+}
+
+document.addEventListener("click",e=>{
+ if(e.target && e.target.id==="metaTeamGenBtn"){
+   generateMetaTeams();
+ }
+});
+
 window.openWiki = openWiki;
 init();
 </script>
