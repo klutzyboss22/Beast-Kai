@@ -1,0 +1,212 @@
+[
+  {
+    "System": "Battle Style",
+    "Rule": "Always played in double battles.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Team Building",
+    "Rule": "Team base stat sum cannot go over 3400.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Signature Content",
+    "Rule": "Signature abilities and signature moves are only known by one beast.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Advanced Stats",
+    "Rule": "Every beast has 60 extra points to distribute; max 30 into one stat.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Personality Stats",
+    "Rule": "A personality can shift 10 points from one stat to another.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Stage Boosts",
+    "Rule": "Stage 1 = 25% | Stage 2 = 50% | Stage 3 = 75% | Stage 4 = 100%.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Stage Limits",
+    "Rule": "Health cannot be stage boosted up or down. Evasiveness cannot be stage boosted up unless done by an ability.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Blocking",
+    "Rule": "Blocking reduces damage instead of preventing the attack. A blocking beast will always be hit. Blocking ignores evasiveness and accuracy for whether the move connects.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Block Base",
+    "Rule": "Base block reduces damage by 60%.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Consecutive Block",
+    "Rule": "Each consecutive block lowers the block value by 15%: 1st 60%, 2nd 45%, 3rd 30%, 4th 15%, 5th 0%.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Blocking Timing",
+    "Rule": "Apply block as damage reduction after the normal damage formula and other damage modifiers.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Ability Rule",
+    "Rule": "Beasts can list multiple ability options, but only one active ability is used in battle.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Sound-Based Moves",
+    "Rule": "Canonical override: sound-based moves use 110 AC. If a sound-based move affects opponents, it targets both opposing beasts. Supportive/self/ally sound moves keep their native non-opponent targeting.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Priority Order",
+    "Rule": "Priority resolves in this order: +2, then +1, then normal moves, then speed order, then Chrono Shift / Shifting Reality, then Pack Tactics, then ties.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Terrain Setters",
+    "Rule": "If two terrain-setting abilities activate at the same time, the slower beast's terrain is set. Setting an active terrain refreshes its duration.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Sand Burial",
+    "Rule": "Sand Burial ignores block and block-based effects, still checks accuracy, and Wind-type beasts are immune.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Fusion",
+    "Rule": "Monster and Frankenstein fuse only if both use Fuze on the same turn. The fused beast is Plasma/Monster, uses the best stat from either beast in each slot, and uses Frankenstein's top two moves plus Monster's bottom two moves.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Fusion Terrain",
+    "Rule": "Laboratory is fusion-only. While fused, it removes and disables both primary and secondary terrains, and only the fused beast's Plasma moves hit both opposing beasts.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Competitive Format",
+    "Rule": "Legendary beasts are banned in competitive play.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Legendary Definition",
+    "Rule": "A beast is Legendary if it has Almighty, or if it has 700 BST and at least one M-grade stat.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Ancient Power",
+    "Rule": "If two beasts with Ancient Power are on the field at the same time, all Ancient Power effects are suppressed, even on allies.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Held Items",
+    "Rule": "A beast can hold only one item at a time unless a move or ability explicitly changes that.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Item Clause",
+    "Rule": "Competitive teams cannot contain duplicate held items.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Sleep Clause",
+    "Rule": "Not used in this format.",
+    "Rule_Type": "Canonical"
+  },
+  {
+    "System": "Random Damage",
+    "Rule": "Random damage factor = 0.95 to 1.00",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Spread Damage",
+    "Rule": "Moves that hit both foes or all beasts use 0.75 damage modifier",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Blocking",
+    "Rule": "Manual block reduces damage by 60%; each consecutive block lowers that reduction by 15% (60/45/30/15/0).",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Block Duration",
+    "Rule": "Manual block lasts for that action window only.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Guard",
+    "Rule": "Guard fully blocks only spread moves for that turn.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Earth Wall",
+    "Rule": "Earth Wall grants full damage immunity until struck once; cannot be used twice in a row.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Sand Shield",
+    "Rule": "Sand Shield blocks all damage for the turn and blocks status moves for 2 turns; cannot be used twice in a row.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Redirection Priority",
+    "Rule": "Move-based redirection resolves before item redirection, which resolves before Heroic Cape ally-cover.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Heroic Cape",
+    "Rule": "Heroic Cape has a 50% chance to intercept a single-target hit aimed at its ally.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Lightning Rod / Quake Brace",
+    "Rule": "These redirect only matching-type single-target attacks to the holder on the same side.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Confusion",
+    "Rule": "Confused beasts self-hit instead of acting; lasts 2 turns unless swapped out.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Stun",
+    "Rule": "Stun stops the target from moving if it is hit before that target acts that turn.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Infect",
+    "Rule": "Infect deals 5% max HP at end of turn and halves all healing received while active.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Blindness",
+    "Rule": "Blindness lowers effective move accuracy by 20% multiplicatively.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Burn / Poison",
+    "Rule": "Burn and Poison each deal 5% max HP at end of turn and apply their listed offensive penalty.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Freeze",
+    "Rule": "Freeze lowers speed by 30% while active.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Move-like mental locks",
+    "Rule": "Mind Wipe and similar temporary lock/disruption effects last 2 turns unless the target swaps out.",
+    "Rule_Type": "Assumed for simulator v3"
+  },
+  {
+    "System": "Item Restriction",
+    "Rule": "Defense Gel and similar effects prevent selection of any non-damaging move.",
+    "Rule_Type": "Assumed for simulator v3"
+  }
+]

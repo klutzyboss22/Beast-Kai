@@ -1,0 +1,2207 @@
+[
+  {
+    "Ability": "Empty",
+    "Description": "No effect",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Bond",
+    "Description": "Raises best stat and speed by one when sent out last (if best stat is speed their speed will raise twice)",
+    "Ability_Role": "Control",
+    "Trigger": "On Switch-In",
+    "Timing": "Entry",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_switch_in, speed_control, stat_mod"
+  },
+  {
+    "Ability": "Flame Spec",
+    "Description": "1.2x boost on flame attacks, 50% less Dmg from flame moves",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Positive",
+    "Description": "When on the field with an ally with Negative, boost best stat and speed by 1 stage",
+    "Ability_Role": "Control",
+    "Trigger": "On Switch-In",
+    "Timing": "Entry",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_switch_in, speed_control, stat_mod"
+  },
+  {
+    "Ability": "Negative",
+    "Description": "When on the field with an ally with Positive, boost best stat and speed by 1 stage",
+    "Ability_Role": "Control",
+    "Trigger": "On Switch-In",
+    "Timing": "Entry",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_switch_in, speed_control, stat_mod"
+  },
+  {
+    "Ability": "Haunted",
+    "Description": "When hit by a physical attack it'll lower the attackers block to 45% for 3 turns",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit, stat_mod"
+  },
+  {
+    "Ability": "No Contact",
+    "Description": "Ignore contact effects",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "suppression/ignore"
+  },
+  {
+    "Ability": "Pride",
+    "Description": "Ignores abilities of opposing beast",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "suppression/ignore"
+  },
+  {
+    "Ability": "Pack Tactics",
+    "Description": "If slower than its ally, this beast acts immediately after its ally.",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Loud Mouth",
+    "Description": "20% boost to sound based attacks",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "sound_interaction, stat_mod"
+  },
+  {
+    "Ability": "Daunting",
+    "Description": "Lower opponents Atk stat by one stage upon being sent out",
+    "Ability_Role": "Utility",
+    "Trigger": "On Switch-In",
+    "Timing": "Entry",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_switch_in, stat_mod"
+  },
+  {
+    "Ability": "Hasty",
+    "Description": "boost speed by 2 stages but block is lowered to 50%",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "QuickDraw",
+    "Description": "30% chance for this beast to move first within its priority bracket.",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Doctor",
+    "Description": "Heal 1/16 hp of Allies' health",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Halt",
+    "Description": "Opposing offensive priority moves targeting this side fail.",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Hot Feet",
+    "Description": "Boost speed by one stage in drought",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Drought",
+    "Machine_Flags": "terrain_setter, speed_control, stat_mod"
+  },
+  {
+    "Ability": "Hunt Pact",
+    "Description": "Boost speed or atk when ally has Hunt Pact",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "Stormy",
+    "Description": "1.5x boost to plasma attacks, 2x in Storm",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Storm",
+    "Machine_Flags": "terrain_setter, stat_mod"
+  },
+  {
+    "Ability": "Clear Sky",
+    "Description": "Remove stage effects",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Thin Skin",
+    "Description": "Block is lowered to 30%",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Heavy",
+    "Description": "Will always move last",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Decorator",
+    "Description": "Takes the effect of the held item held when evolving",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Cannon",
+    "Description": "20% boost to Cannon, Bullet, and Shot moves",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Big Shell",
+    "Description": "Takes 50% less dmg when above 50% health",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Reflect Scale",
+    "Description": "Causes contact dmg to opponents that hit it with a spatk",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Combo",
+    "Description": "Primal and Monster type moves hit twice, block is lowered to 30%",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Shatter",
+    "Description": "When hit breaks the ice and cause ice spikes to fall in to the field to cause swap in dmg (10% HP), reactivates ability in Blizzard",
+    "Ability_Role": "Utility",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "Blizzard",
+    "Machine_Flags": "on_hit, terrain_setter"
+  },
+  {
+    "Ability": "Tailwind",
+    "Description": "Boost speed by 1 stage",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "Vamp Strike",
+    "Description": "Heals health by 50% of the dmg delt by any move used",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Toxic Heal",
+    "Description": "Instead of taking 1/8 dmg from poison, heal 1/8 of health",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing, status_interaction"
+  },
+  {
+    "Ability": "Thick Skull",
+    "Description": "Recoil moves have no recoil",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Sharpen",
+    "Description": "Boost atk by one stage when swapped in",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Cheap Trick",
+    "Description": "Status moves have priority (+1).",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Overpower",
+    "Description": "Reduce opponents block to 30%",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Soundproof",
+    "Description": "Ignores sound based moves",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "sound_interaction, suppression/ignore"
+  },
+  {
+    "Ability": "Shockwave",
+    "Description": "Terra and plasma moves hits both opponents and ally",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Neurotoxin",
+    "Description": "Toxic moves are 2x effective on Mind type",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Venom Touch",
+    "Description": "20% chance to poison when attacking",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Pantry",
+    "Description": "Doubles healing from healing items",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Configure",
+    "Description": "When holding an evoke cube, change form and boost highest stat by 2 stages",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Ego",
+    "Description": "When knocking out an opponent, boost atk by one stage",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Full Force",
+    "Description": "30% boost to moves with secondary effects, ignore the moves secondary effects",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "suppression/ignore, stat_mod"
+  },
+  {
+    "Ability": "Shiver Force",
+    "Description": "1.5 boost to frost moves, boost speed by one stage in blizzard",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Blizzard",
+    "Machine_Flags": "terrain_setter, speed_control, stat_mod"
+  },
+  {
+    "Ability": "Void",
+    "Description": "Draw in spatks, boost both Def and Spdef in Nebula Clouds",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Nebula Clouds",
+    "Machine_Flags": "terrain_setter, stat_mod"
+  },
+  {
+    "Ability": "Storm Drive",
+    "Description": "Heals 1/10 health in storm",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Storm",
+    "Machine_Flags": "terrain_setter, healing"
+  },
+  {
+    "Ability": "Fur Fluff",
+    "Description": "Immune to Frost dmg and frozen. Ignore negative effects of blizzard",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Blizzard",
+    "Machine_Flags": "terrain_setter, suppression/ignore"
+  },
+  {
+    "Ability": "Radioactive",
+    "Description": "Sets Fallout terrain when switched in. Terrain lasts 5 turns.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Fallout",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Below Zero",
+    "Description": "Frozen does 1/16 dmg to health",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Storm Caller",
+    "Description": "Sets Storm terrain when switched in. Terrain lasts 5 turns.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Storm",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Dry Land",
+    "Description": "Sets Drought terrain when switched in. Terrain lasts 5 turns.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Drought",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Nebula",
+    "Description": "Sets Nebula Clouds terrain when switched in. Terrain lasts 5 turns.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Nebula Clouds",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Planner",
+    "Description": "Can not be stunned",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "K\u00f6ppen ET",
+    "Description": "Sets Blizzard terrain when switched in. Terrain lasts 5 turns.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Blizzard",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Almighty",
+    "Description": "After knocking out a opponent spdef and def raise by one stage",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "legendary_marker"
+  },
+  {
+    "Ability": "Phantom Menace",
+    "Description": "Punching attacks have 50% chance to hit again",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Asteroid Belt",
+    "Description": "When below 20% health, enter Barrage form doubling all states except hp",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Ice Armor",
+    "Description": "Can still move when Frozen, increase Def by 2 stages when frozen",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Lock On",
+    "Description": "Plasma moves cannot miss",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Night Vision",
+    "Description": "Moves cannot miss in Total Darkness",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Darkness",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Black Out",
+    "Description": "Sets Darkness terrain when switched in. Terrain lasts 5 turns.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Darkness",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Dreamer",
+    "Description": "Heals 1/5 health when asleep",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing, status_interaction"
+  },
+  {
+    "Ability": "Monstrosity",
+    "Description": "Primal moves become Monster moves when used",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Humiliate",
+    "Description": "Lower opponents Spatk stat by one stage upon being sent out",
+    "Ability_Role": "Utility",
+    "Trigger": "On Switch-In",
+    "Timing": "Entry",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_switch_in, stat_mod"
+  },
+  {
+    "Ability": "Magnetize",
+    "Description": "Plasma moves become Alloy moves when used",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Microscopic",
+    "Description": "AC of moves are 2/3 as accurate",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Grade-A Defence",
+    "Description": "Frost, Flame, Toxic, and Cosmic moves have reduced effects (50%)",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Lava Armor",
+    "Description": "Cant be frozen, 50% less damage from water moves, when hit by a water move Def goes up by one stage",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit"
+  },
+  {
+    "Ability": "Lazy",
+    "Description": "All moves AC used by the user is 50%, boost all damaging moves by 1.5x",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Double-Barrel",
+    "Description": "All Ball, Bomb, and Bullet moves hit both opponents. Spread attacks still take the normal spread damage reduction.",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Supercell",
+    "Description": "Boost all stats by one stage in a storm",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Storm",
+    "Machine_Flags": "terrain_setter, stat_mod"
+  },
+  {
+    "Ability": "Sharp-Shooter",
+    "Description": "All Spatk moves always hit, lowers beast speed by 2 stages",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "Intoxicated",
+    "Description": "When infected with Toxic boost attack by 2 stages but lowers evasiveness by 1 stage",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Boiling Point",
+    "Description": "All Aqua moves have a 30% chance to Burn, user must be Burned",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Phoenix Feathers",
+    "Description": "When hit by a Flame move, heal by 50% of the damage, boost Flame moves of self and Ally beast by 1.5x",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit, healing, stat_mod"
+  },
+  {
+    "Ability": "No Patience",
+    "Description": "All moves that may need a turn to charge will attack first turn",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Watch-Hog",
+    "Description": "Doubles the damage dealt to the target's replacement if the target switches out.",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Hibernate",
+    "Description": "Falls Asleep In a Blizzard and won't wake up until it's over, raise both Def and Spdef by three stages, user keeps these boost after waking up",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Blizzard",
+    "Machine_Flags": "terrain_setter, stat_mod, status_interaction"
+  },
+  {
+    "Ability": "Lightning",
+    "Description": "Plasma moves are boosted by 2x, user cant hit the same target twice with Plasma moves",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Show Hog",
+    "Description": "If other party members stat average aren't good (480) the user gets a 1 stage boost to all stats",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Barrier",
+    "Description": "Ignores damage when blocking but disables block next turn",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "suppression/ignore"
+  },
+  {
+    "Ability": "Astrology",
+    "Description": "Immune to cosmic and gains boost from nebula storm",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Storm",
+    "Machine_Flags": "terrain_setter, stat_mod"
+  },
+  {
+    "Ability": "Bolt Horn",
+    "Description": "When hit by a plasma attack it'll completely absorb the attack doubling the damage of its next attack",
+    "Ability_Role": "Utility",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit"
+  },
+  {
+    "Ability": "Nullify",
+    "Description": "When sent out it'll remove any stat boost completely",
+    "Ability_Role": "Offensive",
+    "Trigger": "On Switch-In",
+    "Timing": "Entry",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_switch_in, stat_mod"
+  },
+  {
+    "Ability": "Quick Learner",
+    "Description": "When hit by a move it can learn that move",
+    "Ability_Role": "Utility",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit"
+  },
+  {
+    "Ability": "Flock",
+    "Description": "If another bird like beast is in battle this beast gets 1 stage boost in speed",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "Early Bird",
+    "Description": "30% chance to act first within its priority bracket.",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Tattletale",
+    "Description": "Informs you what opposing monsters are holding",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Slip-n-Slide",
+    "Description": "Boost Spd by one stage when hit by a Frost or Aqua move",
+    "Ability_Role": "Offensive",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit, stat_mod"
+  },
+  {
+    "Ability": "Crash Course",
+    "Description": "Atk moves are boosted by 1.5x, take 25% recoil unless the move already has recoil",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Foggy Mind",
+    "Description": "On switch-in, enemy abilities are suppressed for 2 turns.",
+    "Ability_Role": "Utility",
+    "Trigger": "On Switch-In",
+    "Timing": "Entry",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_switch_in"
+  },
+  {
+    "Ability": "Roots",
+    "Description": "If hit by a aqua attack it'll heal 15% HP",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit, healing"
+  },
+  {
+    "Ability": "Spirit Chain",
+    "Description": "Traps opponents in battle as long as this beast is on the field",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Spirit Chain",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Rested",
+    "Description": "Can't sleep",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Shimmer",
+    "Description": "Reflects status effects to the opponents side",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Unaware",
+    "Description": "Immune to status moves and can't use status moves",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Bomb holster",
+    "Description": "Self destruct moves don't knock out the user. (Take no dmg from self destruct moves)",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Space Scraper",
+    "Description": "Accuracy of user and ally moves \u00d71.2 for 3 turns. User Speed drops by 1 stage when ability activates.",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control"
+  },
+  {
+    "Ability": "Power Fin",
+    "Description": "1.8 boost on aqua PA moves, but only if it is 60BP or lower",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Sound Jammer",
+    "Description": "Prevents sound based moves and abilities from taking affect",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "sound_interaction"
+  },
+  {
+    "Ability": "Meltdown",
+    "Description": "In Fallout, Toxic moves gain priority (+1).",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Fallout",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Symbiotic",
+    "Description": "Uses the ability of its ally",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Quick Thinking",
+    "Description": "Mind moves gain priority when at full health (+1).",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Unsheathe",
+    "Description": "Increases blade like attacks damage by 20% every time it's used repeatedly",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Guards Shield",
+    "Description": "Blocking reduces 80% of the damage and increases defense by 1 stage",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Retaliate",
+    "Description": "Stats can't be dropped instead this beast gains a 1 stage attack boost",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Lucky",
+    "Description": "Ally beast is twice as likely to crit when attacking",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Unlucky",
+    "Description": "Opposing beast accuracy drop by 1 stage",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Protector",
+    "Description": "Ally beast takes 15% reduced damage",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Adaptability",
+    "Description": "When hit by a move this beast will adapt to become more resistant to that type",
+    "Ability_Role": "Utility",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit"
+  },
+  {
+    "Ability": "Voltage",
+    "Description": "Special attack move has 5% chance to stun",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Airborne",
+    "Description": "Beast is immune to terra type attacks",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Hydrophobic",
+    "Description": "This beast withdraws anytime a water type opposing beast enters battle",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Perfect Vision",
+    "Description": "This beast ignores targets evasiveness stat",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "suppression/ignore"
+  },
+  {
+    "Ability": "Filter Feeder",
+    "Description": "Heals 5% at the beginning of each turn",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Absent Minded",
+    "Description": "Stats can't be lowered or raised",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Wildfire",
+    "Description": "Resist flora and flame type attacks and when hit by those types it's next attacks gets a 30% damage boost",
+    "Ability_Role": "Offensive",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit, stat_mod"
+  },
+  {
+    "Ability": "Heatproof",
+    "Description": "Beast immune to flame type attacks",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Parry",
+    "Description": "If a beast hits the users block the next attack won't miss",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Drenched",
+    "Description": "During storm this beast special defense is doubled",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Storm",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Steamy Hot",
+    "Description": "Gives a beast immunity to aqua type attacks also gains 1 stage boost in evasiveness when hit by that type",
+    "Ability_Role": "Offensive",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit, stat_mod"
+  },
+  {
+    "Ability": "Chrono Shift",
+    "Description": "Reverse speed order begins after the current turn ends and lasts for 2 turns.",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control"
+  },
+  {
+    "Ability": "Leaf Shed",
+    "Description": "Loses status effect after every turn if it has one",
+    "Ability_Role": "Utility",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Pollution",
+    "Description": "Turns Aqua moves into Toxic moves",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Photosynthesis",
+    "Description": "Doubles a beast speed in drought",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Drought",
+    "Machine_Flags": "terrain_setter, speed_control"
+  },
+  {
+    "Ability": "Monster King",
+    "Description": "Gives this beast and partner beast immunity to monster",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Agnosticism",
+    "Description": "Immunity to soul",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Precision",
+    "Description": "Alloy moves don't miss",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Freezing Aura",
+    "Description": "Boost Frost attacks by 25% for this beast and partner",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Elemental",
+    "Description": "Gains a additional type in a terrain aqua in storm, toxic in fallout, frost in blizzard, flame in drought, and monster in darkness",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Drought",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Mithridatism",
+    "Description": "Immune to toxic",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Powdered",
+    "Description": "When hit by a physical attack the beast attacking has 30% chance to fall asleep",
+    "Ability_Role": "Control",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit, status_interaction"
+  },
+  {
+    "Ability": "Fictional",
+    "Description": "Immunity to mythic",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Thunderous",
+    "Description": "Sound moves become plasma type",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "sound_interaction"
+  },
+  {
+    "Ability": "Weightless",
+    "Description": "Beast is 50% faster without a held item",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Hardened",
+    "Description": "Always leaves a beast with 1 HP  after getting hit",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Vending",
+    "Description": "This beast or partner beast gets 1 stage boost to any stat at the end of every round",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Speed Up",
+    "Description": "Beast gains 1 stage boost in speed after attacking",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "Flower Garden",
+    "Description": "Sets a garden terrain that can stack on top of other terrains and it'll heal your beast in battle every round by 20%",
+    "Ability_Role": "Terrain",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Flower Garden",
+    "Machine_Flags": "terrain_setter, healing"
+  },
+  {
+    "Ability": "Cruelty",
+    "Description": "Allows monster types to hit soul types",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Amplify",
+    "Description": "Doubles the secondary effect of a attack",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Duet",
+    "Description": "When another beast a sound based move this beast will copy it in the same turn",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "sound_interaction"
+  },
+  {
+    "Ability": "Spiky Body",
+    "Description": "Physical attacks will take 25% recoil when hitting this beast",
+    "Ability_Role": "Offensive",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit"
+  },
+  {
+    "Ability": "Water Intake",
+    "Description": "Heals 25% after getting hit by an Aqua move, Aqua Immunity",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Saddle Up",
+    "Description": "If the ally beast's speed is lower, then it uses this beast's speed instead",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "Calculate",
+    "Description": "The beast's attacks will hit the targeted beast's lower defense",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Double Team",
+    "Description": "The first damaging move each turn hits again at 30% power.",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Lone Star",
+    "Description": "Boost Sp.Atk stat for every fainted ally",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Blood Mark",
+    "Description": "Marks the enemy who hits this beast, Marked beast take 2x damage from this beast",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Flame Catcher",
+    "Description": "Draws in Flame moves and boost Sp.Atk by 1 stage, Flame immunity",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Driller",
+    "Description": "When blocking, user burrows underground for 1 turn. Immune to single-target attacks; spread attacks deal 50% damage while burrowed. Burrow ends if user attacks.",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Wind Power",
+    "Description": "Draws in Wind moves and heal 25% of health, Wind immunity",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Hardening",
+    "Description": "1 stage boost to defense every time this beast gets hit",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Omega Muscle",
+    "Description": "Doubles attack stat",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Mastery",
+    "Description": "25% boost to moves of the same type as the beast",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Legendary",
+    "Description": "Primal moves become mythic type",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Vampiric",
+    "Description": "When another beast uses a healing move it'll heal the beast with this ability instead",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Sky Bender",
+    "Description": "Beast gains a stage boost in speed and attack by 1 stage when wind type moves are used in battle",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "Consumed Power",
+    "Description": "If a beast is eliminated by Banishment, user gains +1 Attack and +1 Sp. Attack. Activates only once per battle.",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Menacing",
+    "Description": "Stuns all beast except this beast when switched in unless the beast can hit 2X damage on this beast",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Ancient Power",
+    "Description": "Depending on this beast best stat the opposing beast of that stat will drop by 2 stages, ability is nullified if another ancient beast is in battle",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "ancient_power"
+  },
+  {
+    "Ability": "Aggression",
+    "Description": "Boost all stats by 1 stage excluding health and Evasiveness when below 25% by 1 stage",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing, stat_mod"
+  },
+  {
+    "Ability": "External Nightmare",
+    "Description": "When this beast falls Asleep, double all stats except Health and Evasiveness, can still use move when asleep but reverts back when awaken",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing, status_interaction"
+  },
+  {
+    "Ability": "Dragon Scales",
+    "Description": "Beast only has the weaknesses of mythic type, Alloy and Monster but also gains a weakness towards mythic types",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Hydration",
+    "Description": "Primal moves become Aqua type",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Glitched",
+    "Description": "Special Attack moves below 70 power gain 40 power",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Slasher",
+    "Description": "Special attack moves become physical",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Laboratory",
+    "Description": "Fusion-only secondary terrain for Monster + Frankenstein. Active only while fused. It removes and disables both primary and secondary terrains, and only the fused beast's Plasma moves hit both opposing beasts.",
+    "Ability_Role": "Fusion Terrain Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Laboratory",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Immunity",
+    "Description": "Cant be effected by status conditions",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Plague",
+    "Description": "Hitting this beast changes the ability of the attacker to plague",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Tactician",
+    "Description": "If targeted beast has base stats over 600 the attack power will be doubled",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Power Punch",
+    "Description": "Fist moves do 50% more damage",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Reversal",
+    "Description": "Status changing moves and abilities will do the opposite stat changes to this beast",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Foresight",
+    "Description": "Tells you the moves of the opposing beast",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Freezing Temp",
+    "Description": "Lowers physical defense of all beast on the field except its self by 1 stage",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Weather Tower",
+    "Description": "Prevents weather being set from every beast besides the one with this ability",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Weather Tower",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Rage",
+    "Description": "This beast attack moves power increases by 10 every time it's hit",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Dreamscape",
+    "Description": "All allies gain Mind STAB while this beast is in battle. Physical attacks have a 20% chance to cause sleep. Signature ability.",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Dreamscape",
+    "Machine_Flags": "terrain_setter, status_interaction"
+  },
+  {
+    "Ability": "Full Counter",
+    "Description": "Special attack and physical attack goes up 2 stages if this beast is hit by a super effective attack",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Swiper",
+    "Description": "If this beast isn't holding a item it'll steal an opposing beast's item at the end of the turn",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Roaring Flames",
+    "Description": "When a sound based move is used, beast's speed is raised by a stage",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, sound_interaction"
+  },
+  {
+    "Ability": "Synthetic",
+    "Description": "This beast is unaffected by opposing priority moves.",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Role Play",
+    "Description": "Beast gets 2 stage boost in its best stat in a secondary terrain but isn't effected by the secondary terrain",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Infected",
+    "Description": "Beast with this ability is immune to being infected, this beast can effect other beast by using toxic type attacks, infected beast have their special attack and attack stats halved",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Commanding Presence",
+    "Description": "Ally beast's best attack and defense stat are raised a stage",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Hot Start",
+    "Description": "If this beast leads the fight it'll gain a stage boots in attack and speed",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control"
+  },
+  {
+    "Ability": "Chunky",
+    "Description": "Beast health stat is doubled but they're speed stat is halved",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, healing"
+  },
+  {
+    "Ability": "Oozing",
+    "Description": "Toxic type moves do 35% more damage",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Slithery",
+    "Description": "Allows beast to switch out regardless of abilities at play",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Unobtrusive",
+    "Description": "If this beast beast gets hit by a mythic type move instead of taking damage it'll heal by half of the damage it would've taken",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Attention Seeker",
+    "Description": "All stat changes are directed towards this beast",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Clutch Point",
+    "Description": "When HP is below 10% this beast highest stat gets maxed out 4 stages",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Reckless",
+    "Description": "This beast will have a 50% increase in power but will lose 35% of their health every time they attack",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Special Case",
+    "Description": "For every mono type beast on its team this beast will get 1 stage boost in special attack",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Intrusive Thoughts",
+    "Description": "Biting moves become a special attack and have a 25% increase in damage",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Justice",
+    "Description": "This beast gains a 1 stage attack boost after being stunned",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Metallic Bond",
+    "Description": "Beast is Immune to Alloy moves, Def is raised a stage after getting hit by an alloy move",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Sludge",
+    "Description": "Enemy beast's speed are lowered a stage when switching in",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, stat_mod"
+  },
+  {
+    "Ability": "Power Kick",
+    "Description": "Kick based moves are stronger by 50%",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Wish of Freedom",
+    "Description": "When in Storm raise Speed a stage, when in Drought raise SpAtk a stage",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Drought",
+    "Machine_Flags": "terrain_setter, speed_control"
+  },
+  {
+    "Ability": "Mud Sport",
+    "Description": "When a Terra Move is used raise Speed a stage",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control"
+  },
+  {
+    "Ability": "Sandstorm",
+    "Description": "When in Dry Land, any non terra or ally types take damage at the end of the turn",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Storm",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Mass Madness",
+    "Description": "Block only reduces 20% damage. Applies only to attacks from the user's side while the user is active. Signature ability.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Mass Madness",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Dune Rush",
+    "Description": "In Dry Land this beast doubles its Speed and Terra attacks cannot miss.",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control"
+  },
+  {
+    "Ability": "Draconic Synergy",
+    "Description": "Ally dragon like beast gain a boost in Spdef",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Invader",
+    "Description": "When in a terrain that does not match this beast's types, do 20% more damage",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Intimidation",
+    "Description": "When this beast is switched in opposing beast speed will drop 1 stage",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control"
+  },
+  {
+    "Ability": "Dynamo",
+    "Description": "This beast recovers 10% health after using a plasma type move",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "healing"
+  },
+  {
+    "Ability": "Fortification",
+    "Description": "When hit by a crit this beast gain 4 stage boost in defense",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit, stat_mod"
+  },
+  {
+    "Ability": "Resentment",
+    "Description": "Attack raises 1 stage every time this beast misses",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Weapon Master",
+    "Description": "Attacks with weapons have 10% chance to flinch target",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Sunbather",
+    "Description": "This beast gets 1 stage boost in special defense every turn in dry land",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Repulsive",
+    "Description": "When this beast is at 1/4 HP it'll take half the damage",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Combo Breaker",
+    "Description": "Multi hitting moves only hit this beast once",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Speedster",
+    "Description": "Single-target damaging moves with 40 power or less gain priority (+1).",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Sticky Sap",
+    "Description": "All beast speed is 40% slower besides the beast with the ability and Flora types",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Sticky Sap",
+    "Machine_Flags": "terrain_setter, speed_control, stat_mod"
+  },
+  {
+    "Ability": "Deep Abyss",
+    "Description": "Sets the Abyss terrain. Non-Aqua beasts have Evasiveness reduced by 30%.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Deep Abyss",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Gearshift",
+    "Description": "This beast will adjust its speed to play in the speed control that's set keeping it self in the order it would've went originally",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control"
+  },
+  {
+    "Ability": "Royalties",
+    "Description": "This beast and partner beast are immune to status moves and their abilities can't be altered in any way",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Air Force",
+    "Description": "Primal type moves become Wind type",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Carnival",
+    "Description": "This beast has a 10% chance to gain the held item Candy Apple after every turn, if this beast has no held item it's chances are increased to 50%",
+    "Ability_Role": "Utility",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Silk Coat",
+    "Description": "When this beast is inflicted with a status condition it's special defense goes up by 50% and it won't be effected by that status condition",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "status_interaction"
+  },
+  {
+    "Ability": "Master of Elements",
+    "Description": "Beast is resistant (1/2) towards Terra, Flame, Aqua, and Wind types but takes double damage from Alloy, Monster, and Cosmic",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Heavy Heart",
+    "Description": "Prevents other beast from changing its stats",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Coordination",
+    "Description": "Spread attacks deal 50% reduced damage to this beast and its ally.",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Tough Skin",
+    "Description": "Beast can't be critted",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Heroic",
+    "Description": "This beast will tank attacks for it's partner",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Water Bubble",
+    "Description": "This beast won't take any damage until after it gets hit once",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Pure Chaos",
+    "Description": "This beast will flip its match ups becoming resistant to what it hits super effective but hitting them for neutral now and will now hit the types it resists for super effective but those types hit it for neutral now",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Weary",
+    "Description": "This beast is immune to an attack's secondary affect",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "War Crime",
+    "Description": "After landing a critical hit, user gains one additional attack next turn at 50% power. Can only trigger once per battle. Signature ability.",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Flood Warning",
+    "Description": "This beast special attack stat is doubled in storm",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Storm",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Bashido Spirit",
+    "Description": "Power doubles every time a partner beast faints while this beast is in battle",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Abominable",
+    "Description": "In blizzard this beast evasiveness will go up 1 stage every turn blizzard is active",
+    "Ability_Role": "Utility",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Blizzard",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Snow Drift",
+    "Description": "Sets Blizzard terrain for 3 turns when switched in and this beast moves 30% faster in Blizzard.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Blizzard",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Stealth Cloak",
+    "Description": "This beast is not effected by priority",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Constellation",
+    "Description": "This beast restores 25% of its health at the end of the turn if nebula clouds are active",
+    "Ability_Role": "Terrain",
+    "Trigger": "Ongoing",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Nebula Clouds",
+    "Machine_Flags": "terrain_setter, healing"
+  },
+  {
+    "Ability": "Grade-A Defense",
+    "Description": "Frost, Flame, Toxic, and Cosmic moves have reduced effects (50%)",
+    "Ability_Role": "Defensive/Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Spikey Body",
+    "Description": "Physical attacks will take 25% recoil when hitting this beast",
+    "Ability_Role": "Offensive",
+    "Trigger": "On Hit",
+    "Timing": "Reactive",
+    "Terrain_Name": "",
+    "Machine_Flags": "on_hit"
+  },
+  {
+    "Ability": "Balm Holster",
+    "Description": "Self destruct moves don't knock out the user. (Take no dmg from self destruct moves)",
+    "Ability_Role": "Utility",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Sharpened Claws",
+    "Description": "Boost atk by one stage when swapped in",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "stat_mod"
+  },
+  {
+    "Ability": "Ability won\u2019t activate unless fused",
+    "Description": "Placeholder inactive slot on Monster and Frankenstein. Their fusion ability is Laboratory, which only activates after both use Fuze on the same turn.",
+    "Ability_Role": "Fusion Placeholder",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Koppen ET",
+    "Description": "Sets Blizzard terrain when switched in. Terrain lasts 5 turns.",
+    "Ability_Role": "Terrain",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "Blizzard",
+    "Machine_Flags": "terrain_setter"
+  },
+  {
+    "Ability": "Pop Burst",
+    "Description": "After a Flame move is used, ready a Flame attack that deals 25% to the opposing Beast after being hit",
+    "Ability_Role": "Offensive",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  },
+  {
+    "Ability": "Capsaicin",
+    "Description": "Ally is Burned and speed is raised a stage",
+    "Ability_Role": "Support",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": "speed_control, status_interaction"
+  },
+  {
+    "Ability": "Thick Smog",
+    "Description": "Sets a smoke screen on entry that blocks the first attack from enemies",
+    "Ability_Role": "Control",
+    "Trigger": "Passive",
+    "Timing": "Field Passive",
+    "Terrain_Name": "",
+    "Machine_Flags": ""
+  }
+]

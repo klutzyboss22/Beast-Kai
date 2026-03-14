@@ -1,0 +1,74 @@
+[
+  {
+    "Status": "Poison",
+    "Primary_Timing": "End of turn",
+    "Damage_or_Residual": "5% max HP damage",
+    "Stat_Modifier": "Physical Attack x0.70",
+    "Default_Duration": "Until cleared",
+    "Immunity_Notes": "Flora types immune per source sheet",
+    "Simulator_Notes": "Canonical poison rule"
+  },
+  {
+    "Status": "Burn",
+    "Primary_Timing": "End of turn",
+    "Damage_or_Residual": "5% max HP damage",
+    "Stat_Modifier": "Special Attack x0.70",
+    "Default_Duration": "Until cleared",
+    "Immunity_Notes": "Flame/Terra immune per source sheet",
+    "Simulator_Notes": "Canonical burn rule"
+  },
+  {
+    "Status": "Freeze",
+    "Primary_Timing": "Passive",
+    "Damage_or_Residual": "",
+    "Stat_Modifier": "Speed x0.70",
+    "Default_Duration": "Until cleared",
+    "Immunity_Notes": "Frost logic uses source immunities",
+    "Simulator_Notes": "Canonical freeze rule"
+  },
+  {
+    "Status": "Blindness",
+    "Primary_Timing": "Passive",
+    "Damage_or_Residual": "",
+    "Stat_Modifier": "Accuracy x0.80",
+    "Default_Duration": "Until cleared",
+    "Immunity_Notes": "None specified",
+    "Simulator_Notes": "20% multiplicative accuracy loss"
+  },
+  {
+    "Status": "Sleep",
+    "Primary_Timing": "Start of turn",
+    "Damage_or_Residual": "Cannot act",
+    "Stat_Modifier": "",
+    "Default_Duration": "Per move duration",
+    "Immunity_Notes": "Sleep immune targets per source sheet",
+    "Simulator_Notes": "No sleep clause in competitive"
+  },
+  {
+    "Status": "Stun",
+    "Primary_Timing": "Immediate same-turn",
+    "Damage_or_Residual": "No damage",
+    "Stat_Modifier": "Cannot move if struck before acting",
+    "Default_Duration": "Same turn only",
+    "Immunity_Notes": "Guide Book grants immunity",
+    "Simulator_Notes": "User clarified same-turn interruption"
+  },
+  {
+    "Status": "Confusion",
+    "Primary_Timing": "Action check",
+    "Damage_or_Residual": "Self-hit instead of action",
+    "Stat_Modifier": "",
+    "Default_Duration": "2 turns unless swapped out",
+    "Immunity_Notes": "None specified",
+    "Simulator_Notes": "User clarified confusion self-hit"
+  },
+  {
+    "Status": "Infect",
+    "Primary_Timing": "End of turn",
+    "Damage_or_Residual": "5% max HP damage",
+    "Stat_Modifier": "Healing received x0.50",
+    "Default_Duration": "Until cleared",
+    "Immunity_Notes": "None specified",
+    "Simulator_Notes": "Balanced assumed infection rule"
+  }
+]
