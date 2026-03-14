@@ -8,45 +8,47 @@
 <link rel="stylesheet" href="styles.css">
 
 </head>
+
 <body>
 
 <header>
 <h1>Beast Kai</h1>
+
 <nav>
-<button id="teamBuilderBtn">Team Builder</button>
-<button id="wikiBtn">Wiki</button>
-<button id="battleBtn">Battle Simulator</button>
+<button data-tab="builder">Team Builder</button>
+<button data-tab="wiki">Wiki</button>
+<button data-tab="battle">Battle</button>
+<button data-tab="rules">Rules</button>
 </nav>
+
 </header>
 
 <main>
 
-<section id="teamBuilder" class="panel">
+<section id="builder" class="tab">
 <h2>Team Builder</h2>
-<div id="teamSlots">
-<p>Choose 6 beasts for your team.</p>
-</div>
-<button id="addBeast">Add Beast</button>
+<div id="builderContainer"></div>
 </section>
 
-<section id="wiki" class="panel hidden">
-<h2>Beast Wiki</h2>
+<section id="wiki" class="tab" style="display:none;">
+<h2>Wiki</h2>
 <input id="wikiSearch" placeholder="Search beasts...">
 <div id="wikiResults"></div>
 </section>
 
-<section id="battle" class="panel hidden">
+<section id="battle" class="tab" style="display:none;">
 <h2>Battle Simulator</h2>
-<p>Select two teams to start a doubles battle.</p>
 <button id="startBattle">Start Battle</button>
+<div id="battleBoard"></div>
 <div id="battleLog"></div>
 </section>
 
-</main>
+<section id="rules" class="tab" style="display:none;">
+<h2>Game Rules</h2>
+<p>Beast Kai uses permanent doubles battles.</p>
+</section>
 
-<footer>
-<p>Beast Kai Simulator</p>
-</footer>
+</main>
 
 <script src="data_bundle.js"></script>
 <script src="app.js"></script>
