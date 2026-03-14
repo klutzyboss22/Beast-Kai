@@ -1,13 +1,12 @@
-# Beast Kai Simulator Single-File GitHub Pages Build
+# Beast Kai Single-File GitHub Pages Build (Fixed)
 
-This build removes duplicate and unnecessary files and compiles the runtime JSON data into one bundled file.
+This fixes a JavaScript error that prevented the UI from becoming interactive.
 
-## Deploy on GitHub Pages
-Upload the contents of this zip to your repository, then set:
+## Deploy
+Upload the contents of this zip to your GitHub repo and set Pages to:
 - Source: Deploy from branch
 - Branch: main
 - Folder: /docs
 
-## Files required
-- docs/index.html
-- docs/assets/data_bundle.js
+## Replace old site
+Delete the old `docs` contents in your repo and replace them with the `docs` folder from this package.

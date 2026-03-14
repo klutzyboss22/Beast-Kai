@@ -293,6 +293,7 @@ pre{white-space:pre-wrap;background:#0b1224;border:1px solid var(--line);border-
   </section>
 
 </main>
+<script src="assets/data_bundle.js"></script>
 
 <script>
 const state = {
@@ -304,7 +305,7 @@ const state = {
 const $ = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-async function loadJSON(name){ const r = await fetch('data/' + name); return r.json(); }
+async function loadJSON(name){ return window.BEAST_KAI_DATA[name]; }
 
 function norm(s){ return String(s || '').trim(); }
 function lower(s){ return norm(s).toLowerCase(); }
@@ -1505,8 +1506,7 @@ function stopAutoBattle(){
     autoBattleTimer = null;
   }
   const btn = document.getElementById('autoBattleBtn');
-  if(btn) btn.textContent = 'Start Auto Battle</button>
-    <button class="btn" id="batchTestBtn">Run 50 Battle Test';
+  if(btn) btn.textContent = 'Start Auto Battle';
 }
 function startAutoBattle(){
   if(!battleState.active) return;
