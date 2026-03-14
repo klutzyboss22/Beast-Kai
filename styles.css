@@ -1,0 +1,30 @@
+:root{
+  --bg:#0b1020;--panel:#11182b;--panel2:#162036;--text:#ebf1ff;--muted:#9fb0d2;--line:#253251;
+  --accent:#6ea8ff;--good:#59d68f;--warn:#ffce6b;--bad:#ff7b7b;
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#0a0f1d,#0c1324 40%,#091120);color:var(--text)}
+button,input,select,textarea{font:inherit}
+.topbar{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--line);background:rgba(6,10,20,.92);position:sticky;top:0;z-index:5;backdrop-filter:blur(10px)}
+h1{margin:0 0 4px;font-size:28px}.subtitle{margin:0;color:var(--muted)}
+.topbar-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+button,.segment{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+button:hover,.segment:hover{border-color:var(--accent)}
+.tabs{display:flex;gap:8px;padding:12px 20px;border-bottom:1px solid var(--line);background:#0d1426;position:sticky;top:84px;z-index:4}
+.tab.active,.segment.active{background:var(--accent);color:#071121;border-color:transparent;font-weight:700}
+main{padding:20px}.panel{display:none}.panel.active{display:block}
+.builder-layout,.wiki-layout{display:grid;grid-template-columns:320px 1fr;gap:18px}.sidebar,.detail-card,.summary{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}.search{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0b1222;color:var(--text);margin:10px 0 12px}
+.list{display:flex;flex-direction:column;gap:8px;max-height:70vh;overflow:auto;padding-right:2px}.list-item{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#0d1527;cursor:pointer}.list-item:hover{border-color:var(--accent)}
+.cards{display:grid;gap:16px}.two-col{grid-template-columns:repeat(2,minmax(0,1fr))}.slot-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.slot-head h3{margin:0}.pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#0e1730;border:1px solid var(--line);font-size:12px;color:var(--muted);margin-right:6px;margin-bottom:6px}
+.summary{margin-bottom:16px}.summary-grid,.sim-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.metric{padding:12px;border-radius:12px;background:#0d1527;border:1px solid var(--line)}.metric strong{display:block;font-size:22px;margin-top:4px}
+.field{margin-bottom:12px}.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}.field select,.field input,.field textarea{width:100%;padding:10px;border-radius:10px;background:#0b1222;color:var(--text);border:1px solid var(--line)}
+.small{font-size:12px;color:var(--muted)} .ok{color:var(--good)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.stat{padding:8px;border:1px solid var(--line);border-radius:10px;background:#0d1527;text-align:center}.stat b{display:block;font-size:12px;color:var(--muted)}
+.detail-card h2,.detail-card h3{margin-top:0}.segmented{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.wiki-layout .detail-card{min-height:70vh}
+.table-wrap{overflow:auto} table{width:100%;border-collapse:collapse} th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:center} th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--panel)}
+.sim-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.battle-board{margin-top:16px}.hidden{display:none}
+.arena{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}.side{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}.active-row,.bench-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.bench-row{margin-top:12px}
+.combatant{padding:12px;border:1px solid var(--line);border-radius:14px;background:#0d1527}.combatant.fainted{opacity:.55}.hpbar{height:10px;border-radius:99px;background:#253251;overflow:hidden;margin:8px 0}.hpbar > span{display:block;height:100%;background:linear-gradient(90deg,#68eaa2,#f4d35e,#ff7070)}
+.battle-log{max-height:420px;overflow:auto;display:flex;flex-direction:column;gap:8px}.log-entry{padding:8px 10px;background:#0d1527;border-radius:10px;border:1px solid var(--line)}
+.action-box{padding:12px;border:1px solid var(--line);border-radius:12px;background:#0d1527;margin-bottom:12px}
+.inline-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width: 1080px){.builder-layout,.wiki-layout,.arena,.summary-grid,.sim-grid,.two-col{grid-template-columns:1fr}.tabs{top:118px}}
