@@ -1,19 +1,13 @@
-# Beast Kai Simulator Release v2
+# Beast Kai Simulator Single-File GitHub Pages Build
 
-This release fixes the missing data-file issue from the earlier release.
+This build removes duplicate and unnecessary files and compiles the runtime JSON data into one bundled file.
 
-## Why the old release broke
-The earlier package only included `site/index.html`, but the app also needs the JSON files inside `site/data/`.
+## Deploy on GitHub Pages
+Upload the contents of this zip to your repository, then set:
+- Source: Deploy from branch
+- Branch: main
+- Folder: /docs
 
-## GitHub Pages setup
-1. Create a GitHub repository.
-2. Upload all files from this zip.
-3. Go to **Settings → Pages**.
-4. Set:
-   - **Source:** Deploy from branch
-   - **Branch:** main
-   - **Folder:** /site
-5. Save.
-
-## Important
-Keep the `site/data/` folder exactly where it is.
+## Files required
+- docs/index.html
+- docs/assets/data_bundle.js
