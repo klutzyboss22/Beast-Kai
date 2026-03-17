@@ -4,34 +4,34 @@ const log = (msg) => {
   el.scrollTop = el.scrollHeight;
 };
 
-let battleActive = false;
+let battle = {
+  started: false
+};
 
 document.getElementById("startBattle").onclick = () => {
-  battleActive = true;
-  log("Battle Started!");
+  battle.started = true;
+  log("Battle started!");
 };
 
 document.getElementById("attackBtn").onclick = () => {
-  if (!battleActive) return;
+  if (!battle.started) return;
 
-  // Example calc using your formula
   const level = 50;
   const power = 80;
-  const atk = 100;
+  const atk = 120;
   const def = 100;
 
-  let damage =
-    (((24 + level) * power * atk) / (32 * def) + 8);
+  let dmg = (((24 + level) * power * atk) / (32 * def)) + 8;
 
-  log("Attack dealt " + Math.floor(damage) + " damage");
+  log("Attack dealt " + Math.floor(dmg) + " damage");
 };
 
 document.getElementById("swapBtn").onclick = () => {
-  if (!battleActive) return;
-  log("Swap queued (will occur end of turn)");
+  if (!battle.started) return;
+  log("Switch queued (end of turn)");
 };
 
 document.getElementById("blockBtn").onclick = () => {
-  if (!battleActive) return;
-  log("Blocking (60% damage reduction)");
+  if (!battle.started) return;
+  log("Blocking (60% reduction)");
 };
