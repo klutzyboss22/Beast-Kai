@@ -4,71 +4,143 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beast Kai</title>
-
 <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<div class="app">
-
 <header class="topbar">
-  <h1>Beast Kai</h1>
+  <div>
+    <h1>Beast Kai</h1>
+    <p class="subtitle">Team builder, wiki, and doubles battle simulator</p>
+  </div>
+  <div class="topbar-actions">
+    <button id="sampleTeamBtn" type="button">Sample Team</button>
+    <button id="exportTeamBtn" type="button">Export JSON</button>
+    <button id="copyTeamBtn" type="button">Copy Team Text</button>
+    <button id="importTeamBtn" type="button">Import Team</button>
+    <button id="syncSimBtn" type="button">Sync to Simulator</button>
+    <button id="randomEnemyBtn" type="button">Random Enemy</button>
+  </div>
 </header>
 
-<div class="layout">
+<nav class="tabs">
+  <button class="tab active" data-tab="builder" type="button">Builder</button>
+  <button class="tab" data-tab="wiki" type="button">Wiki</button>
+  <button class="tab" data-tab="rules" type="button">Rules</button>
+  <button class="tab" data-tab="simulator" type="button">Battle</button>
+</nav>
 
-<!-- LEFT PANEL -->
-<div class="sidebar">
-  <button data-tab="battle">Battle</button>
-</div>
+<main>
+  <section id="builder" class="panel active">
+    <div class="summary" id="teamSummary"></div>
 
-<!-- MAIN -->
-<div class="main">
+    <div class="builder-layout">
+      <aside class="sidebar">
+        <h3>Beast List</h3>
+        <input id="builderSearch" class="search" type="text" placeholder="Search beasts, types, roles, abilities...">
+        <div id="builderBeastList" class="list"></div>
+      </aside>
 
-<section id="battle" class="tab">
+      <div>
+        <div id="teamSlots" class="cards two-col"></div>
+      </div>
+    </div>
+  </section>
 
-<div class="battle-layout">
+  <section id="wiki" class="panel">
+    <div class="wiki-layout">
+      <aside class="sidebar">
+        <h3>Wiki Search</h3>
+        <div class="segmented">
+          <button class="segment active" data-kind="all" type="button">All</button>
+          <button class="segment" data-kind="beast" type="button">Beasts</button>
+          <button class="segment" data-kind="move" type="button">Moves</button>
+          <button class="segment" data-kind="ability" type="button">Abilities</button>
+          <button class="segment" data-kind="item" type="button">Items</button>
+        </div>
+        <input id="wikiSearch" class="search" type="text" placeholder="Search wiki...">
+        <div id="wikiResults" class="list"></div>
+      </aside>
 
-  <!-- FIELD -->
-  <div class="battlefield">
+      <article id="wikiDetail" class="detail-card">
+        <h2>Beast Kai Wiki</h2>
+        <p>Select an entry from the left.</p>
+      </article>
+    </div>
+  </section>
 
-    <div class="side enemy">
-      <div id="enemy1" class="beast-slot"></div>
-      <div id="enemy2" class="beast-slot"></div>
+  <section id="rules" class="panel">
+    <div class="cards">
+      <div class="detail-card">
+        <h2>Battle Rules</h2>
+        <div id="rulesList" class="list"></div>
+      </div>
+
+      <div class="detail-card">
+        <h2>Status & Terrain</h2>
+        <div id="statusTerrainList"></div>
+      </div>
+
+      <div class="detail-card">
+        <h2>Type Chart</h2>
+        <div class="table-wrap">
+          <table id="typeChartTable"></table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="simulator" class="panel">
+    <div class="sim-grid">
+      <div class="detail-card">
+        <h2>Your Battle Selection</h2>
+        <p class="small">Choose exactly 4 beasts and exactly 2 leads.</p>
+        <div id="playerBattlePicker" class="list"></div>
+      </div>
+
+      <div class="detail-card">
+        <h2>Enemy Team</h2>
+        <div id="enemyBattlePicker" class="list"></div>
+      </div>
     </div>
 
-    <div class="side player">
-      <div id="player1" class="beast-slot"></div>
-      <div id="player2" class="beast-slot"></div>
+    <div class="sim-toolbar">
+      <button id="startBattleBtn" type="button">Start Battle</button>
     </div>
 
+    <div id="battleBoard" class="battle-board hidden">
+      <div class="arena">
+        <div class="side">
+          <h3>Enemy Side</h3>
+          <div id="enemyActive" class="active-row"></div>
+          <div id="enemyBench" class="bench-row"></div>
+        </div>
+
+        <div class="side">
+          <h3>Your Side</h3>
+          <div id="playerActive" class="active-row"></div>
+          <div id="playerBench" class="bench-row"></div>
+        </div>
+      </div>
+
+      <div id="battleActions" class="detail-card"></div>
+
+      <div class="detail-card">
+        <h3>Battle Log</h3>
+        <div id="battleLog" class="battle-log"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<template id="teamSlotTemplate">
+  <div class="detail-card">
+    <div class="slot-head"></div>
+    <div class="slot-body"></div>
   </div>
-
-  <!-- RIGHT PANEL -->
-  <div class="battle-ui">
-
-    <div class="controls">
-      <button id="startBattle">Start</button>
-      <button id="attackBtn">Attack</button>
-      <button id="swapBtn">Switch</button>
-      <button id="blockBtn">Block</button>
-    </div>
-
-    <div id="battleLog" class="log"></div>
-
-  </div>
-
-</div>
-
-</section>
-
-</div>
-</div>
-</div>
+</template>
 
 <script src="data_bundle.js"></script>
 <script src="app.js"></script>
-
 </body>
 </html>
