@@ -1,133 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Beast Kai</title>
-  <link rel="stylesheet" href="./assets/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beast Kai</title>
+
+<link rel="stylesheet" href="assets/styles.css">
+
 </head>
+
 <body>
-  <header class="topbar">
-    <div>
-      <h1>Beast Kai</h1>
-      <p class="subtitle">Fresh build from spreadsheet data: builder, wiki, and doubles simulator.</p>
-    </div>
-    <div class="topbar-actions">
-      <button id="sampleTeamBtn">Load Sample Team</button>
-      <button id="exportTeamBtn">Export Team</button>
-      <button id="copyTeamBtn">Copy Team JSON</button>
-      <button id="importTeamBtn">Import Team JSON</button>
-    </div>
-  </header>
 
-  <nav class="tabs">
-    <button class="tab active" data-tab="builder">Team Builder</button>
-    <button class="tab" data-tab="wiki">Wiki</button>
-    <button class="tab" data-tab="sim">Battle Simulator</button>
-    <button class="tab" data-tab="rules">Rules</button>
-  </nav>
+<header>
+<h1>Beast Kai</h1>
 
-  <main>
-    <section id="builder" class="panel active">
-      <div class="builder-layout">
-        <aside class="sidebar">
-          <h2>Roster</h2>
-          <input id="builderSearch" class="search" placeholder="Search beasts, type, role...">
-          <div id="builderBeastList" class="list"></div>
-        </aside>
+<nav>
+<button data-tab="builder">Team Builder</button>
+<button data-tab="wiki">Wiki</button>
+<button data-tab="battle">Battle</button>
+<button data-tab="rules">Rules</button>
+</nav>
 
-        <div class="content">
-          <div id="teamSummary" class="summary"></div>
-          <div id="teamSlots" class="cards two-col"></div>
-        </div>
-      </div>
-    </section>
+</header>
 
-    <section id="wiki" class="panel">
-      <div class="wiki-layout">
-        <aside class="sidebar">
-          <h2>Search Wiki</h2>
-          <input id="wikiSearch" class="search" placeholder="Search beasts, moves, abilities...">
-          <div class="segmented">
-            <button class="segment active" data-kind="all">All</button>
-            <button class="segment" data-kind="beast">Beasts</button>
-            <button class="segment" data-kind="move">Moves</button>
-            <button class="segment" data-kind="ability">Abilities</button>
-          </div>
-          <div id="wikiResults" class="list"></div>
-        </aside>
-        <article id="wikiDetail" class="detail-card"></article>
-      </div>
-    </section>
+<main>
 
-    <section id="sim" class="panel">
-      <div class="sim-toolbar">
-        <button id="syncSimBtn">Use Builder Team</button>
-        <button id="randomEnemyBtn">Random Enemy Team</button>
-        <button id="startBattleBtn">Start Battle</button>
-      </div>
-      <div class="sim-grid">
-        <div class="detail-card">
-          <h2>Your Battle Team</h2>
-          <div id="playerBattlePicker"></div>
-        </div>
-        <div class="detail-card">
-          <h2>Enemy Battle Team</h2>
-          <div id="enemyBattlePicker"></div>
-        </div>
-      </div>
-      <div id="battleBoard" class="battle-board hidden">
-        <div class="arena">
-          <div class="side enemy">
-            <h3>Enemy</h3>
-            <div id="enemyActive" class="active-row"></div>
-            <div id="enemyBench" class="bench-row"></div>
-          </div>
-          <div class="side player">
-            <h3>You</h3>
-            <div id="playerActive" class="active-row"></div>
-            <div id="playerBench" class="bench-row"></div>
-          </div>
-        </div>
-        <div class="sim-grid actions-log">
-          <div class="detail-card">
-            <h2>Actions</h2>
-            <div id="battleActions"></div>
-          </div>
-          <div class="detail-card">
-            <h2>Battle Log</h2>
-            <div id="battleLog" class="battle-log"></div>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- TEAM BUILDER -->
+<section id="builder" class="tab">
+<h2>Team Builder</h2>
+<div id="builderContainer"></div>
+</section>
 
-    <section id="rules" class="panel">
-      <div class="sim-grid">
-        <div class="detail-card">
-          <h2>Core Battle Rules</h2>
-          <div id="rulesList"></div>
-        </div>
-        <div class="detail-card">
-          <h2>Status + Terrain</h2>
-          <div id="statusTerrainList"></div>
-        </div>
-      </div>
-      <div class="detail-card">
-        <h2>Type Chart</h2>
-        <div class="table-wrap"><table id="typeChartTable"></table></div>
-      </div>
-    </section>
-  </main>
+<!-- WIKI -->
+<section id="wiki" class="tab" style="display:none;">
+<h2>Wiki</h2>
+<input id="wikiSearch" placeholder="Search beasts...">
+<div id="wikiResults"></div>
+</section>
 
-  <template id="teamSlotTemplate">
-    <section class="detail-card slot-card">
-      <div class="slot-head"></div>
-      <div class="slot-body"></div>
-    </section>
-  </template>
+<!-- BATTLE -->
+<section id="battle" class="tab" style="display:none;">
+<h2>Battle Simulator</h2>
+<button id="startBattle">Start Battle</button>
 
-  <script src="./assets/data_bundle.js"></script>
-  <script src="./assets/app.js"></script>
+<div id="battleBoard"></div>
+
+<div id="battleControls">
+<button id="attackBtn">Attack</button>
+<button id="swapBtn">Swap</button>
+<button id="blockBtn">Block</button>
+</div>
+
+<div id="battleLog"></div>
+</section>
+
+<!-- RULES -->
+<section id="rules" class="tab" style="display:none;">
+<h2>Rules</h2>
+
+<p><strong>Battle Format:</strong> Double Battles</p>
+<p><strong>Level:</strong> 50</p>
+
+<h3>HP Formula</h3>
+<p>HP = 100 + (Health Stat × 3)</p>
+
+<h3>Damage Formula</h3>
+<p>
+Damage = ((((24 + Level) × Move Power × Atk Stat) / (32 × Def Stat)) + 8)
+× Targets × Weather × STAB × Type × Other × Random
+</p>
+
+<h3>Accuracy</h3>
+<ul>
+<li>AC ≥ 110 → always hits</li>
+<li>Otherwise: Move AC × (100 / Target Evasion)</li>
+<li>Min 35% / Max 100%</li>
+</ul>
+
+<h3>Core Mechanics</h3>
+<ul>
+<li>Blocking reduces damage (not negates)</li>
+<li>Switching happens at end of turn</li>
+<li>Terrains override each other</li>
+<li>Dual-type moves multiply effectiveness (max 4×)</li>
+</ul>
+
+</section>
+
+</main>
+
+<script src="assets/data_bundle.js"></script>
+<script src="assets/app.js"></script>
+
+<script>
+// Tab switching
+document.querySelectorAll("nav button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(tab => tab.style.display = "none");
+    document.getElementById(btn.dataset.tab).style.display = "block";
+  });
+});
+</script>
+
 </body>
 </html>
